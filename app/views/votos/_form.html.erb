@@ -1,0 +1,23 @@
+<%= form_for(@voto) do |f| %>
+<% if @voto.errors.any? %>
+<div class="alert-message block-message error">
+  <ul>
+  <% @voto.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+<ul class="inputs-list">
+<% @restaurantes.each do |restaurante| %>
+  <li class="optionRadio">
+    <%= f.radio_button :restaurante_id, restaurante.id   %>
+    <%= restaurante.nome %>
+  </li>
+<% end %>
+</ul>
+<div class="actions-options">
+<%= f.submit 'Votar', :class => 'btn primary large'%>
+</div>
+<% end %>
+

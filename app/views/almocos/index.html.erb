@@ -1,0 +1,22 @@
+<h1>Votação de hoje</h1>
+
+<h1>No passado...</h1>
+
+<table>
+  <tr>
+    <th>Data</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @almocos.each do |almoco| %>
+  <tr>
+    <td><%= almoco.data %></td>
+    <td><%= link_to 'Show', almoco %></td>
+    <td><%= link_to 'Edit', edit_almoco_path(almoco) %></td>
+    <td><%= link_to 'Destroy', almoco, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
