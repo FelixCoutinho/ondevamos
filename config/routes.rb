@@ -6,6 +6,8 @@ Ondevamos::Application.routes.draw do
   resources :votos
 
   resources :restaurantes
+  
+  #match "/restaurantes/count" => "restaurantes#count"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

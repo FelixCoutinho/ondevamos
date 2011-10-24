@@ -4,6 +4,10 @@ class Voto < ActiveRecord::Base
 
   validates_associated :usuario, :restaurante
 
-  validates :data, :presence => true
+  validates_presence_of :data
+  
+  def jaVotou(usuario, data = Date.today)
+    Voto.where(:usuario_id => usuario.id, :data => data).exists?
+  end
 end
 
