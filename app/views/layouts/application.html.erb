@@ -10,22 +10,21 @@
     google.setOnLoadCallback(drawChart);
     function drawChart() {
       var data = new google.visualization.DataTable();
+      var restaurantes = $.get('/restaurantes/todos');
+      
       data.addColumn('string', 'Restaurante');
       data.addColumn('number', 'Votos');
       
-      $.get('/restaurantes/count');
+      data.addRows(restaurantes.length);
       
-      data.addRows(5);
-      data.setValue(0, 0, 'Work');
-      data.setValue(0, 1, 11);
-      data.setValue(1, 0, 'Eat');
-      data.setValue(1, 1, 2);
-      data.setValue(2, 0, 'Commute');
-      data.setValue(2, 1, 2);
-      data.setValue(3, 0, 'Watch TV');
-      data.setValue(3, 1, 2);
-      data.setValue(4, 0, 'Sleep');
-      data.setValue(4, 1, 7);
+      var sequencialGrafico = 0;
+      
+      for(restaurantes in restaurante){
+        data.setValue(sequencialGrafico, 0, restaurante.nome);
+        var totalVotosParaRestaurante = $.get('/votos/count/restaurante/'+restaurante.id);
+        data.setValue(sequencialGrafico, 1, totalVotosParaRestaurante);
+        sequencialGrafico++;
+      }
 
       var chart = new google.visualization.PieChart(document.getElementById('grafico'));
       chart.draw(data, {width: 860, height: 300, title: 'Onde Vamos?'});

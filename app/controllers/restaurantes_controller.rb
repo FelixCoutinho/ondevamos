@@ -55,8 +55,13 @@ class RestaurantesController < ApplicationController
   
   def count
     respond_to do |format|
-      puts Restaurante.all.count
-      format.js {render :nothing => true}
+      format.js { render :json => Restaurante.count }
+    end
+  end
+  
+  def todos
+    respond_to do |format|
+      format.js { render :json => Restaurante.all }
     end
   end
 end

@@ -5,11 +5,11 @@
 </div>
 <% end %>
 <% if @jaVotou %>
-<%= render 'form' %>
-<% else %>
 <div class="alert-message block-message success">
   <p>Você já votou para 'Onde vamos' no dia de hoje. Obrigado.</p>
 </div>
 <div id="grafico"></div>
+<% else %>
+<%= render 'form' %>
 <% end %>
 

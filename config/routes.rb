@@ -3,67 +3,19 @@ Ondevamos::Application.routes.draw do
 
   resources :usuarios
 
-  resources :votos
-
-  resources :restaurantes
+  match "/votos" => "votos#index", :via => :get
+  match "/votos" => "votos#create", :via => :post
+  match "/votos/count" => "votos#count", :via => :get
+  match "/votos/count/restaurante/:id" => "votos#totalPorRestaurante", :via => :get
   
-  #match "/restaurantes/count" => "restaurantes#count"
+  match "/restaurantes" => "restaurantes#index", :via => :get
+  match "/restaurantes/new" => "restaurantes#new", :via => :get
+  match "/restaurantes" => "restaurantes#create", :via => :post
+  match "/restaurantes/:id/edit" => "restaurantes#edit", :via => :get
+  match "/restaurantes/:id" => "restaurantes#update", :via => :put
+  match "/restaurantes/:id" => "restaurantes#destroy", :via => :delete
+  match "/restaurantes/count" => "restaurantes#count", :via => :get
+  match "/restaurantes/todos" => "restaurantes#todos", :via => :get
 
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
-
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
-
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', :on => :collection
-  #     end
-  #   end
-
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
-
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => "welcome#index"
-
-  # See how all your routes lay out with "rake routes"
-
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
 end
 
