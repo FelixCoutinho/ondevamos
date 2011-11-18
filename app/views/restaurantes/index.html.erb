@@ -1,24 +1,31 @@
-<h1>Listing restaurantes</h1>
+<h1>Restaurantes</h1>
 
-<table>
-  <tr>
-    <th>Nome</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<% if notice %>
+<div class="alert-message block-message success">
+  <p><%= notice %></p>
+</div>
+<% end %>
 
+<table class="bordered-table zebra-striped">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
 <% @restaurantes.each do |restaurante| %>
-  <tr>
-    <td><%= restaurante.nome %></td>
-    <td><%= link_to 'Show', restaurante %></td>
-    <td><%= link_to 'Edit', edit_restaurante_path(restaurante) %></td>
-    <td><%= link_to 'Destroy', restaurante, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  <tbody>
+    <tr>
+      <td><%= restaurante.nome %></td>
+      <td><%= link_to 'Editar', edit_restaurante_path(restaurante) %></td>
+      <td><%= link_to 'Remover', restaurante, :confirm => 'Tem certeza disso?', :method => :delete %></td>
+    </tr>
+  <tbody>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Restaurante', new_restaurante_path %>
+<%= link_to 'Novo Restaurante', new_restaurante_path, :class => 'btn primary' %>
 

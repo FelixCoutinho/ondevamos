@@ -7,6 +7,14 @@ class RestaurantesController < ApplicationController
     end
   end
 
+  def show
+    @restaurante = Restaurante.find(params[:id])
+
+    respond_to do |format|
+      format.html
+    end
+  end
+
   def new
     @restaurante = Restaurante.new
 
@@ -22,11 +30,12 @@ class RestaurantesController < ApplicationController
   def create
     @restaurante = Restaurante.new(params[:restaurante])
 
-    if @restaurante.save
-      flash[:notice] = 'Restaurante foi adicionado com sucesso.'
-      redirect_to :action => "index"
-    else
-      render :action => "new"
+    respond_to do |format|
+      if @restaurante.save
+        format.html { redirect_to(restaurantes_url, :notice => 'Restaurante foi adicionado com sucesso.') }
+      else
+        format.html { render :action => "new" }
+      end
     end
   end
 
@@ -35,8 +44,7 @@ class RestaurantesController < ApplicationController
 
     respond_to do |format|
       if @restaurante.update_attributes(params[:restaurante])
-        flash[:notice] = 'Restaurante foi atualizado com sucesso.'
-        redirect_to :action => "index"
+        format.html { redirect_to(restaurantes_url, :notice => 'Restaurante foi atualizado com sucesso.') }
       else
         format.html { render :action => "edit" }
       end
@@ -48,20 +56,7 @@ class RestaurantesController < ApplicationController
     @restaurante.destroy
 
     respond_to do |format|
-       flash[:notice] = 'Restaurante foi removido com sucesso.'
-        redirect_to :action => "index"
-    end
-  end
-  
-  def count
-    respond_to do |format|
-      format.js { render :json => Restaurante.count }
-    end
-  end
-  
-  def todos
-    respond_to do |format|
-      format.js { render :json => Restaurante.all }
+      format.html { redirect_to(restaurantes_url, :notice => 'Restaurante foi removido com sucesso.') }
     end
   end
 end

@@ -11,6 +11,8 @@ gem 'jquery-rails', '>= 1.0.12'
 
 gem 'rails-i18n'
 
+gem "google_visualr", "~> 2.1.0"
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

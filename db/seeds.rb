@@ -9,7 +9,7 @@
 usuario = Usuario.create(:email => 'felix.coutinho@gmail.com', :senha => '1')
 restaurantes = Restaurante.create([{:nome => 'Frangão'}, {:nome => 'Divina Comida'}, {:nome => 'Cozinha Mágica'}, {:nome => 'Del Paseo'}, {:nome => 'Verde'}, {
 :nome => 'Varanda' }])
-Voto.create(:data => Date.today, :restaurante_id => restaurantes.first, :usuario_id => usuario)
-Voto.create(:data => Date.today, :restaurante_id => restaurantes.first, :usuario_id => usuario)
-Voto.create(:data => Date.today, :restaurante_id => restaurantes.first, :usuario_id => usuario)
+#Voto.create(:data => Date.today, :restaurante_id => restaurantes.first, :usuario_id => usuario)
+#Voto.create(:data => Date.today, :restaurante_id => restaurantes.first, :usuario_id => usuario)
+#Voto.create(:data => Date.today, :restaurante_id => restaurantes.first, :usuario_id => usuario)
 

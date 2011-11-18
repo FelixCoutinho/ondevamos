@@ -5,31 +5,6 @@
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :all %>
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-  <script type="text/javascript">
-    google.load("visualization", "1", {packages:["corechart"]});
-    google.setOnLoadCallback(drawChart);
-    function drawChart() {
-      var data = new google.visualization.DataTable();
-      var restaurantes = $.get('/restaurantes/todos');
-      
-      data.addColumn('string', 'Restaurante');
-      data.addColumn('number', 'Votos');
-      
-      data.addRows(restaurantes.length);
-      
-      var sequencialGrafico = 0;
-      
-      for(restaurantes in restaurante){
-        data.setValue(sequencialGrafico, 0, restaurante.nome);
-        var totalVotosParaRestaurante = $.get('/votos/count/restaurante/'+restaurante.id);
-        data.setValue(sequencialGrafico, 1, totalVotosParaRestaurante);
-        sequencialGrafico++;
-      }
-
-      var chart = new google.visualization.PieChart(document.getElementById('grafico'));
-      chart.draw(data, {width: 860, height: 300, title: 'Onde Vamos?'});
-    }
-  </script>
   <%= csrf_meta_tag %>
 </head>
 <body>

@@ -9,6 +9,7 @@
   <p>Você já votou para 'Onde vamos' no dia de hoje. Obrigado.</p>
 </div>
 <div id="grafico"></div>
+<%= render_chart(@chart, 'grafico') %>
 <% else %>
 <%= render 'form' %>
 <% end %>
