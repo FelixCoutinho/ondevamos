@@ -13,8 +13,6 @@ gem 'rails-i18n'
 
 gem "google_visualr", "~> 2.1.0"
 
-gem 'devise'
-
 # Use unicorn as the web server
 # gem 'unicorn'
 

@@ -1,6 +1,4 @@
 Ondevamos::Application.routes.draw do
-  devise_for :usuarios
-
   root :to => "votos#index"
 
   resources :restaurantes

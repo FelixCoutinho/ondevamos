@@ -1,6 +1,4 @@
 class RestaurantesController < ApplicationController
-  before_filter :authenticate_usuario!
-
   def index
     @restaurantes = Restaurante.all
 

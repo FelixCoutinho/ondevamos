@@ -30,7 +30,7 @@ Ondevamos::Application.configure do
     :address              => "smtp.gmail.com",
     :port                 => 587,
     :domain               => 'localhost',
-    :user_name            => 'ondevamosonline@gmail.com',
+    :user_name            => '',
     :password             => '!Q@Wondevamos#E$R',
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
