@@ -1,8 +1,16 @@
 <h2>Junte-se a nós!</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-<%= devise_error_messages! %>
 <fieldset>
+  <% if resource.errors.any? %>
+    <div class="alert-message block-message error">
+      <ul>
+      <% resource.errors.full_messages.map.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div class="clearfix">
     <%= f.label :email %>
     <div class="input">
