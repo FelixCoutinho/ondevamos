@@ -1,5 +1,5 @@
 class VotosController < ApplicationController
-  before_filter :authenticate_usuario!
+  before_filter :authenticate_usuario!, :except => [:index]
 
   def index
     @voto = Voto.new

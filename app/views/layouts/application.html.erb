@@ -18,7 +18,7 @@
           <% if !usuario_signed_in? %><li><a href="/usuarios/sign_up">Junte-se a nós!</a></li><% end %>
         </ul>
         <% if usuario_signed_in? %>
-          <p class="pull-right">Olá <a href="#"><%= current_usuario.email %></a> <%= link_to('(Sair)', destroy_usuario_session_path, :method => :delete) %></p>
+          <p class="pull-right"><a href="#"><%= current_usuario.email %></a> <%= link_to('(Sair)', destroy_usuario_session_path, :method => :delete) %></p>
         <% else %>        
           <form action="/usuarios/sign_in" class="pull-right">
             <input class="input-small" type="text" placeholder="Email">

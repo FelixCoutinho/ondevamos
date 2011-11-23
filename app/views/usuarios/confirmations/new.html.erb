@@ -1,12 +1,19 @@
-<h2>Instruções de reenvio de confirmação</h2>
+<h2>Reenvio de confirmação</h2>
 
 <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
+<%= devise_error_messages! %>
+<fieldset>
+  <div class="clearfix">
+    <%= f.label :email %>
+    <div class="input">
+    <%= f.email_field :email %>
+    </div>
+  </div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-
-  <div><%= f.submit "Reenviar instruções de confirmação" %></div>
+  <div class="actions">
+    <%= f.submit "Reenviar", :class => 'btn primary'  %>
+  </div>
+</fieldset>
 <% end %>
 
-<%= render :partial => "devise/shared/links" %>
+<%= render :partial => "usuarios/shared/links" %>
