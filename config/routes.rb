@@ -1,14 +1,19 @@
 Ondevamos::Application.routes.draw do
+  # Definindo que a página inicial do sistema será a página inicial do
+  # controller de votos.
+  root :to => "votos#index"
+  
+  # Configuração para que o Devise considere o recurso 'usuarios' para fazer
+  # a autenticação do sistema.
   devise_for :usuarios
 
-  root :to => "votos#index"
-
+  # Configurando as rotas padrões para o controller de 'restaurantes'
   resources :restaurantes
 
+  # Rotas para os votos
+  # Página inicial
   match "/votos" => "votos#index", :via => :get
+  # Submissão para página de criação do voto
   match "/votos" => "votos#create", :via => :post
-
-  match "/usuarios/new" => "usuarios#new", :via => :get
-  match "/usuarios" => "usuarios#create", :via => :post
 end
 

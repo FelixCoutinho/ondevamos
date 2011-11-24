@@ -6,9 +6,9 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
-usuario = Usuario.create(:email => 'felix.coutinho@gmail.com', :password => '123456')
-restaurantes = Restaurante.create([{:nome => 'Frangão'}, {:nome => 'Divina Comida'}, {:nome => 'Cozinha Mágica'}, {:nome => 'Del Paseo'}, {:nome => 'Verde'}, {
-:nome => 'Varanda' }])
+#usuario = Usuario.create(:email => 'felix.coutinho@gmail.com', :password => '123456')
+#restaurantes = Restaurante.create([{:nome => 'Frangão'}, {:nome => 'Divina Comida'}, {:nome => #'Cozinha Mágica'}, {:nome => 'Del Paseo'}, {:nome => 'Verde'}, {
+#:nome => 'Varanda' }])
 #Voto.create(:data => Date.today, :restaurante_id => restaurantes.first, :usuario_id => usuario)
 #Voto.create(:data => Date.today, :restaurante_id => restaurantes.first, :usuario_id => usuario)
 #Voto.create(:data => Date.today, :restaurante_id => restaurantes.first, :usuario_id => usuario)
