@@ -1,15 +1,22 @@
 <h2>Reenvio de confirmação</h2>
 
 <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
-<%= devise_error_messages! %>
 <fieldset>
+  <% if resource.errors.any? %>
+  <div class="alert-message block-message error">
+    <ul>
+    <% resource.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
   <div class="clearfix">
     <%= f.label :email %>
     <div class="input">
     <%= f.email_field :email %>
     </div>
   </div>
-
   <div class="actions">
     <%= f.submit "Reenviar", :class => 'btn primary'  %>
   </div>

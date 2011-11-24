@@ -2,6 +2,15 @@
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 <fieldset>
+  <% if resource.errors.any? %>
+  <div class="alert-message block-message error">
+    <ul>
+    <% resource.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
   <div class="clearfix">
     <%= f.label :email %>
     <div class="input">

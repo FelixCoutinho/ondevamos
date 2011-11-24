@@ -33,12 +33,16 @@
     <div class="hero-unit">
       <% if notice %>
       <div class="alert-message block-message success">
-        <p><%= notice %></p>
+        <ul>
+          <li><%= notice %></li>
+        </ul>
       </div>
       <% end %>
       <% if alert %>
-      <div class="alert-message block-message success">
-        <p><%= alert %></p>
+      <div class="alert-message block-message error">
+        <ul>
+          <li><%= alert %></li>
+        </ul>
       </div>
       <% end %>
       <%= yield %>

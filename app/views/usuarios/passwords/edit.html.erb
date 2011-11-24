@@ -1,9 +1,17 @@
 <h2>Mudar sua senha</h2>
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
-<%= devise_error_messages! %>
 <%= f.hidden_field :reset_password_token %>
 <fieldset>
+  <% if resource.errors.any? %>
+  <div class="alert-message block-message error">
+    <ul>
+    <% resource.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
   <div class="clearfix">
     <%= f.label :password, "Nova senha" %>
     <div class="input">
