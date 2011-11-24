@@ -1,9 +1,11 @@
 class VotosController < ApplicationController
-  before_filter :authenticate_usuario!, :except => [:index]
+  # Faz com que esse controller passe pelo filtro de autenticação
+  before_filter :authenticate_usuario!
 
+  # Action inicial do controller de votos
   def index
     @voto = Voto.new
-    @voto.usuario = Usuario.all.first
+    @voto.usuario = current_usuario
     @voto.data = Date.today
     @restaurantes = Restaurante.all
     @jaVotou = @voto.jaVotou @voto.usuario
@@ -19,15 +21,16 @@ class VotosController < ApplicationController
     end
   end
 
+  # Adiciona/cria um voto
   def create
     @voto = Voto.new(params[:voto])
     @voto.data = Date.today
-    @voto.usuario_id = Usuario.all.first.id
+    @voto.usuario_id = current_usuario.id
     
     if @voto.save
       @restaurantes = Restaurante.all
       flash[:notice] = 'Seu voto foi recebido.'
-      @jaVotou = @voto.jaVotou Usuario.all.first
+      @jaVotou = @voto.jaVotou current_usuario
       redirect_to :action => "index"
     else
       @restaurantes = Restaurante.all
