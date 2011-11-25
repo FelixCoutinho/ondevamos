@@ -15,5 +15,9 @@ Ondevamos::Application.routes.draw do
   match "/votos" => "votos#index", :via => :get
   # Submissão para página de criação do voto
   match "/votos" => "votos#create", :via => :post
+  
+  # Links do menu
+  match "/sobre" => "menu#sobre", :via => :get
+  match "/contato" => "menu#contato", :via => :get
 end
 
