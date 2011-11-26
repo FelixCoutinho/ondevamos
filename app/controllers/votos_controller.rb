@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class VotosController < ApplicationController
   # Faz com que esse controller passe pelo filtro de autenticação
   before_filter :authenticate_usuario!, :except => [:index]

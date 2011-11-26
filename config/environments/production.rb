@@ -46,4 +46,16 @@ Ondevamos::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  #Devise
+  config.action_mailer.default_url_options = { :host => ENV['URL'] }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => ENV['GMAIL_SMTP_USER'],
+    :user_name            => ENV['GMAIL_SMTP_USER'],
+    :password             => ENV['GMAIL_SMTP_PASSWORD'],
+    :authentication       => 'plain',
+    :enable_starttls_auto => true  }
 end
