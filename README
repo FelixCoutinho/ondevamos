@@ -16,7 +16,7 @@ um gráfico com o resultado parcial da votação. A opção que possuir mais vot
 que vence.
 
 == Instalação
-Alguns procedimento simples são necessários.
+Alguns procedimentos simples são necessários.
 
 Faça um clone do repositório via git:
 $ git clone http://github.com/FelixCoutinho/ondevamos.git
@@ -28,8 +28,14 @@ Isso vai fazer com o gerenciador de dependências do Rails faça a instalação 
 dependências da aplicação. Essas dependência podem ser visualizadas no arquivo 
 Gemfile.
 
+É necessário também editar o arquivo 'config/database.yml' para configurar o 
+acesso a base de dados, lembre-se de editar os blocos 'development' e 'test', 
+pois esses são os blocos das configurações para desenvolvimento e de teste. 
+As entradas 'database', 'username', 'password' e 'host' são as principais 
+que devem ser alteradas com as suas configurações.
+
 A seguir execute a migração da base de dados, assim a base de dados vai ser 
-criada e vai ficar pronta para uso:
+criada e daí ficar pronta para uso:
 $ rake db:migrate
 
 Agora basta usar seu servidor web preferido, com os devidos módulos para 
