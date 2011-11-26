@@ -17,7 +17,9 @@ class VotosController < ApplicationController
       data_table.new_column('string', 'Restaurante') 
       data_table.new_column('number', 'Voto(s)') 
       @voto.contagemVotacao.each do |voto|
-          data_table.add_row([voto.label, voto.total])
+          # Depois da migração para Postgres foi necessário transformar o total
+          # em Integer
+          data_table.add_row([voto.label, voto.total.to_i])
         end
       option = { width: 860, height: 300 }
       # Configurando para gráfico de estilo 'pizza'

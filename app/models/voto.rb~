@@ -13,7 +13,7 @@ class Voto < ActiveRecord::Base
   def contagemVotacao(data = Date.today)
     Voto.find(
       :all, 
-      :select => "restaurantes.nome as label, count(*) as total",
+      :select => "restaurantes.nome as label, count(id) as total",
       :conditions => {:data => data},
       :joins => "inner join restaurantes on restaurantes.id = votos.restaurante_id",
       :group => :nome)
