@@ -1,9 +1,13 @@
 class VotosController < ApplicationController
   # Faz com que esse controller passe pelo filtro de autenticação
-  before_filter :authenticate_usuario!
+  before_filter :authenticate_usuario!, :except => [:index]
+
+  def index
+
+  end
 
   # Action inicial do controller de votos
-  def index
+  def home
     @voto = Voto.new
     # Resgatando usuário que está autenticado
     @voto.usuario = current_usuario

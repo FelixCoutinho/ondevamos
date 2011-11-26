@@ -13,6 +13,7 @@ Ondevamos::Application.routes.draw do
   # Rotas para os votos
   # Página inicial
   match "/votos" => "votos#index", :via => :get
+  match "/votos/home" => "votos#home", :via => :get
   # Submissão para página de criação do voto
   match "/votos" => "votos#create", :via => :post
   

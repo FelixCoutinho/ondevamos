@@ -8,5 +8,17 @@ class ApplicationController < ActionController::Base
   def set_locale
     I18n.locale = 'pt-BR' # Português do Brasil
   end
+
+  def resource_name
+    :usuario
+  end
+
+  def resource
+    @resource ||= Usuario.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:usuario]
+  end
 end
 
