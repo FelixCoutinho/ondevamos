@@ -37,8 +37,15 @@ class VotosController < ApplicationController
     @voto.data = Date.today
     # Usuário que está autenticado
     @voto.usuario_id = current_usuario.id
-    
-    if @voto.save
+    @jaVotou = @voto.jaVotou @voto.usuario 
+
+    if @jaVotou
+      @restaurantes = Restaurante.all
+      flash[:notice] = 'Desculpe, mas você só pode ter apenas 1(um) voto por dia.'
+      redirect_to :action => "home"
+    end
+
+    if @voto.save 
       @restaurantes = Restaurante.all
       flash[:notice] = 'Seu voto foi recebido.'
       # Fazendo verificação de existencia de voto
@@ -46,7 +53,7 @@ class VotosController < ApplicationController
       # gráfico no momento após o voto ser salvo. E não precisar recarregar
       # a tela novamente
       @jaVotou = @voto.jaVotou current_usuario
-      redirect_to :action => "index"
+      redirect_to :action => "home"
     else
       @restaurantes = Restaurante.all
       render :action => "index"

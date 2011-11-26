@@ -13,6 +13,7 @@
       <div class="container">
         <a class="brand" href="/">Onde Vamos?</a>
         <ul class="nav">
+          <% if usuario_signed_in? %><li><a href="/votos/home">Votação</a></li><% end %>
           <li><a href="/sobre">Sobre</a></li>
           <li><a href="/contato">Contato</a></li>
           <% if !usuario_signed_in? %><li><a href="/usuarios/sign_up">Junte-se a nós!</a></li><% end %>
