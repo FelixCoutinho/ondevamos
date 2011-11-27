@@ -23,7 +23,7 @@ pt-BR:
       timeout: 'A sua sessão expirou, por favor faça login novamente para continuar.'
       inactive: 'A sua conta ainda não foi ativada.'
     sessions:
-      signed_in: 'Login feito com sucesso.'
+      signed_in: 'Login feito com sucesso. Seja bem vindo.'
       signed_out: 'Logout feito com sucesso.'
     passwords:
       send_instructions: 'Dentro de minutos você receberá um e-mail com as instruções de reinicialização de sua senha.'
