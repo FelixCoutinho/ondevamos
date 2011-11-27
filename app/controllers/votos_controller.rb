@@ -37,7 +37,7 @@ class VotosController < ApplicationController
     @voto = Voto.new(params[:voto])
     @voto.data = Date.today
     # Usuário que está autenticado
-    @voto.usuario_id = current_usuario.id
+    @voto.usuario = Usuario.find(:id => current_usuario.id)
     @jaVotou = @voto.jaVotou @voto.usuario 
 
     if @jaVotou
