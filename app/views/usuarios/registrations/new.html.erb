@@ -1,18 +1,38 @@
 <h2>Junte-se a nós!</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "Junte-se!" %></div>
+<fieldset>
+  <% if resource.errors.any? %>
+  <div class="alert-message block-message error">
+    <ul>
+    <% resource.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <div class="clearfix">
+    <%= f.label :email %>
+    <div class="input">
+    <%= f.email_field :email %>
+    </div>
+  </div>
+  <div class="clearfix">
+    <%= f.label :password %>
+    <div class="input">
+    <%= f.password_field :password %>
+    </div>
+  </div>
+  <div class="clearfix">
+    <%= f.label :password_confirmation %>
+    <div class="input">
+    <%= f.password_field :password_confirmation %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Junte-se', :class => 'btn primary' %>
+  </div>
+</fieldset>
 <% end %>
 
-<%= render :partial => "devise/shared/links" %>
+<%= render :partial => "usuarios/shared/links" %>

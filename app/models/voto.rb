@@ -16,7 +16,7 @@ class Voto < ActiveRecord::Base
       :select => "restaurantes.nome as label, count(*) as total",
       :conditions => {:data => data},
       :joins => "inner join restaurantes on restaurantes.id = votos.restaurante_id",
-      :group => :restaurante_id)
+      :group => :nome)
   end
 end
 

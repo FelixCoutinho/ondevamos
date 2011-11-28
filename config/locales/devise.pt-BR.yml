@@ -23,7 +23,7 @@ pt-BR:
       timeout: 'A sua sessão expirou, por favor faça login novamente para continuar.'
       inactive: 'A sua conta ainda não foi ativada.'
     sessions:
-      signed_in: 'Login feito com sucesso.'
+      signed_in: 'Login feito com sucesso. Seja bem vindo.'
       signed_out: 'Logout feito com sucesso.'
     passwords:
       send_instructions: 'Dentro de minutos você receberá um e-mail com as instruções de reinicialização de sua senha.'
@@ -36,13 +36,13 @@ pt-BR:
       confirmed: 'Sua conta foi confirmada com sucesso. Você está logado.'
     registrations:
       signed_up: 'Bem-vindo! Você registrou-se com sucesso.'
-      inactive_signed_up: 'Você registrou-se com sucesso. No entanto, não pudemos realizar seu login porque sua conta está %{reason}.'
+      inactive_signed_up: 'Você registrou-se com sucesso. No entanto, não pudemos realizar seu login porque sua conta %{reason}.'
       updated: 'Você atualizou a sua conta com sucesso.'
       destroyed: 'Até mais! Sua conta foi cancelada com sucesso. Esperamos vê-lo em breve.'
       reasons:
-        inactive: 'inativa'
-        unconfirmed: 'não confirmada'
-        locked: 'bloqueada'
+        inactive: 'está inativa'
+        unconfirmed: 'não está confirmada'
+        locked: 'está bloqueada'
     unlocks:
       send_instructions: 'Dentro de minutos você receberá um e-mail com instruções para desbloquear a sua conta.'
       unlocked: 'Sua conta foi desbloqueada com sucesso. Você está logado.'

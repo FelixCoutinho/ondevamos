@@ -1,0 +1,13 @@
+Thu, 24 Nov 2011 14:33:18 -0300
+doc/README_FOR_APP	Thu, 24 Nov 2011 14:33:12 -0300
+app/models/usuario.rb	Wed, 23 Nov 2011 10:27:55 -0300
+app/models/voto.rb	Fri, 18 Nov 2011 15:16:08 -0300
+app/models/restaurante.rb	Thu, 17 Nov 2011 13:15:42 -0300
+app/controllers/application_controller.rb	Wed, 19 Oct 2011 14:14:59 -0300
+app/controllers/restaurantes_controller.rb	Wed, 23 Nov 2011 10:27:55 -0300
+app/controllers/votos_controller.rb	Wed, 23 Nov 2011 13:58:24 -0300
+app/controllers/usuarios_controller.rb	Thu, 24 Nov 2011 14:21:44 -0300
+app/helpers/application_helper.rb	Tue, 18 Oct 2011 11:20:29 -0300
+app/helpers/usuarios_helper.rb	Thu, 24 Nov 2011 14:04:53 -0300
+app/helpers/restaurantes_helper.rb	Tue, 18 Oct 2011 11:21:34 -0300
+app/helpers/votos_helper.rb	Wed, 19 Oct 2011 09:40:39 -0300

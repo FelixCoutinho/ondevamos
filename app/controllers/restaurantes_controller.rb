@@ -1,6 +1,8 @@
 class RestaurantesController < ApplicationController
+  # Faz com que esse controller passe pelo filtro de autenticação
   before_filter :authenticate_usuario!
 
+  # Action inicial
   def index
     @restaurantes = Restaurante.all
 
@@ -9,14 +11,7 @@ class RestaurantesController < ApplicationController
     end
   end
 
-  def show
-    @restaurante = Restaurante.find(params[:id])
-
-    respond_to do |format|
-      format.html
-    end
-  end
-
+  # Inicia o processo de criação de um restaurante
   def new
     @restaurante = Restaurante.new
 
@@ -25,10 +20,12 @@ class RestaurantesController < ApplicationController
     end
   end
 
+  # Abre um restaurante para edição
   def edit
     @restaurante = Restaurante.find(params[:id])
   end
 
+  # Cria um restaurante
   def create
     @restaurante = Restaurante.new(params[:restaurante])
 
@@ -41,6 +38,7 @@ class RestaurantesController < ApplicationController
     end
   end
 
+  # Atualiza um restaurante
   def update
     @restaurante = Restaurante.find(params[:id])
 
@@ -53,6 +51,7 @@ class RestaurantesController < ApplicationController
     end
   end
 
+  # Remove um restaurante
   def destroy
     @restaurante = Restaurante.find(params[:id])
     @restaurante.destroy

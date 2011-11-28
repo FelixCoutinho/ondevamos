@@ -6,6 +6,17 @@
   <%= javascript_include_tag :all %>
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
   <%= csrf_meta_tag %>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-27330817-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
 </head>
 <body>
   <div class="topbar">
@@ -13,18 +24,19 @@
       <div class="container">
         <a class="brand" href="/">Onde Vamos?</a>
         <ul class="nav">
-          <li><a href="#">Sobre</a></li>
-          <li><a href="#">Contato</a></li>
+          <% if usuario_signed_in? %><li><a href="/votos/home">Votação</a></li><% end %>
+          <li><a href="/sobre">Sobre</a></li>
+          <li><a href="/contato">Contato</a></li>
           <% if !usuario_signed_in? %><li><a href="/usuarios/sign_up">Junte-se a nós!</a></li><% end %>
         </ul>
         <% if usuario_signed_in? %>
-          <p class="pull-right">Olá <a href="#"><%= current_usuario.email %></a> <%= link_to('(Sair)', destroy_usuario_session_path, :method => :delete) %></p>
+          <p class="pull-right"><a href="#"><%= current_usuario.email %></a> <%= link_to('(Sair)', destroy_usuario_session_path, :method => :delete) %></p>
         <% else %>        
-          <form action="/usuarios/sign_in" class="pull-right">
-            <input class="input-small" type="text" placeholder="Email">
-            <input class="input-small" type="password" placeholder="Senha">
-            <button class="btn" type="submit">Entrar</button>
-          </form>
+          <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "pull-right"}) do |f| %>
+            <%= f.email_field :email, :class => 'input-small', :placeholder => 'Email' %>
+            <%= f.password_field :password, :class => 'input-small', :placeholder => 'Senha' %>
+            <button type="submit" class="btn">Entrar</button>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -37,7 +49,7 @@
       </div>
       <% end %>
       <% if alert %>
-      <div class="alert-message block-message success">
+      <div class="alert-message block-message error">
         <p><%= alert %></p>
       </div>
       <% end %>
