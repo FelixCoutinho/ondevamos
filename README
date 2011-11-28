@@ -1,18 +1,18 @@
 === Bem vindo ao 'Onde vamos?'
 
 == Introdução
-Durante bastante tempo eu e meus colegas de trabalho discutimos sobre onde 
+Durante bastante tempo eu e meus colegas de trabalho discutimos sobre onde
 deveriamos ir almoçar/lanchar/comer. Sempre tinhamos muitas opiniões, mas era
 sempre a mesma situação, tinhamos que discutir na porta do prédio para onde
-iriamos. 
+iriamos.
 
-Com essa problemática em mente foi que tomei a decisão de criar um serviço 
+Com essa problemática em mente foi que tomei a decisão de criar um serviço
 simples que resolveria essa questão. Surgiu a idéia do 'Onde vamos?'.
 
-O serviço é simples. Basta termos nossas opções de restaurante/lanchonete/shopping 
-já cadastradas e daí participar de uma votação diária. Cada usuário tem direito 
+O serviço é simples. Basta termos nossas opções de restaurante/lanchonete/shopping
+já cadastradas e daí participar de uma votação diária. Cada usuário tem direito
 a 1 (um) voto por dia. Após cada voto o sistema computa o resultado e apresenta
-um gráfico com o resultado parcial da votação. A opção que possuir mais votos é 
+um gráfico com o resultado parcial da votação. A opção que possuir mais votos é
 que vence.
 
 == Instalação
@@ -24,21 +24,40 @@ $ git clone http://github.com/FelixCoutinho/ondevamos.git
 Entre no diretorio 'ondevamos' e execute o comando:
 $ bundle install
 
-Isso vai fazer com o gerenciador de dependências do Rails faça a instalação das 
-dependências da aplicação. Essas dependência podem ser visualizadas no arquivo 
+Isso vai fazer com o gerenciador de dependências do Rails faça a instalação das
+dependências da aplicação. Essas dependência podem ser visualizadas no arquivo
 Gemfile.
 
-É necessário também editar o arquivo 'config/database.yml' para configurar o 
-acesso a base de dados, lembre-se de editar os blocos 'development' e 'test', 
-pois esses são os blocos das configurações para desenvolvimento e de teste. 
-As entradas 'database', 'username', 'password' e 'host' são as principais 
+O banco de dados homoloagdo é o PostgreSQL 8.4.
+
+É necessário editar o arquivo 'config/database.yml' para configurar o
+acesso a base de dados, lembre-se de editar os blocos 'development' e 'test',
+pois esses são os blocos das configurações para desenvolvimento e de teste.
+As entradas 'database', 'username', 'password' e 'host' são as principais
 que devem ser alteradas com as suas configurações.
 
-A seguir execute a migração da base de dados, assim a base de dados vai ser 
+O database.yml de desenvolvimento ficará parecido com esse:
+
+###########################
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: ondevamos_development
+  pool: 5
+  username: ondevamos
+  password: ondevamos
+  host: 127.0.0.1
+###########################
+
+Adicione um novo usuário ao seu banco de dados Postgres.
+$ sudo -u postgres createuser -D -A -P ondevamos
+$ sudo -u postgres createdb -O ondevamos ondevamos_development
+
+A seguir execute a migração da base de dados, assim a base de dados vai ser
 criada e daí ficar pronta para uso:
 $ rake db:migrate
 
-Agora basta usar seu servidor web preferido, com os devidos módulos para 
+Agora basta usar seu servidor web preferido, com os devidos módulos para
 executar aplicações ruby/rails, e chamar a aplicação por meio de um browser.
 
 == Contato
