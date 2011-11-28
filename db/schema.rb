@@ -13,6 +13,12 @@
 
 ActiveRecord::Schema.define(:version => 20111119191204) do
 
+  create_table "almocos", :force => true do |t|
+    t.date     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "restaurantes", :force => true do |t|
     t.string   "nome"
     t.datetime "created_at"
