@@ -3,6 +3,10 @@ Ondevamos::Application.routes.draw do
   # controller de votos.
   root :to => "votos#index"
   
+  namespace :usuario do
+    root :to => "votos#home"
+  end
+  
   # Configuração para que o Devise considere o recurso 'usuarios' para fazer
   # a autenticação do sistema.
   devise_for :usuarios
