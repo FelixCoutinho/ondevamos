@@ -11,7 +11,7 @@ class VotosController < ApplicationController
   def home
     @voto = Voto.new
     # Resgatando usuário que está autenticado
-    @voto.usuario = current_usuario
+    @voto.usuario = Usuario.find(current_usuario.id)
     @voto.data = Date.today
     @restaurantes = Restaurante.all
     @jaVotou = @voto.jaVotou @voto.usuario 
@@ -37,7 +37,9 @@ class VotosController < ApplicationController
     @voto = Voto.new(params[:voto])
     @voto.data = Date.today
     # Usuário que está autenticado
-    @voto.usuario = Usuario.find(:id => current_usuario.id)
+    @voto.usuario = Usuario.find(current_usuario.id)
+    # Simulando o formulário para validação do ActiveRecord
+    @voto.usuario_id = current_usuario.id    
     @jaVotou = @voto.jaVotou @voto.usuario 
 
     if @jaVotou
@@ -53,11 +55,11 @@ class VotosController < ApplicationController
       # Foi necessário para forçar a re-checagem da tela e assim mostrar o
       # gráfico no momento após o voto ser salvo. E não precisar recarregar
       # a tela novamente
-      @jaVotou = @voto.jaVotou current_usuario
+      @jaVotou = @voto.jaVotou @voto.usuario
       redirect_to :action => "home"
     else
       @restaurantes = Restaurante.all
-      render :action => "index"
+      render :action => "home"
     end
   end
 end
