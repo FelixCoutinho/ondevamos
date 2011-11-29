@@ -5,19 +5,11 @@ class RestaurantesController < ApplicationController
   # Action inicial
   def index
     @restaurantes = Restaurante.all
-
-    respond_to do |format|
-      format.html
-    end
   end
 
   # Inicia o processo de criação de um restaurante
   def new
     @restaurante = Restaurante.new
-
-    respond_to do |format|
-      format.html
-    end
   end
 
   # Abre um restaurante para edição

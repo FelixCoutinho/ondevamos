@@ -32,13 +32,15 @@
         <a class="brand" href="/">Onde Vamos?</a>
         <ul class="nav">
           <% if usuario_signed_in? %><li><a href="/votos/home">Votação</a></li><% end %>
+          <li><a href="/grupos">Grupos</a></li>
+          <li><a href="/restaurantes">Restaurantes</a></li>
           <li><a href="/sobre">Sobre</a></li>
           <li><a href="/contato">Contato</a></li>
           <% if !usuario_signed_in? %><li><a href="/usuarios/sign_up">Junte-se a nós!</a></li><% end %>
         </ul>
         <% if usuario_signed_in? %>
           <p class="pull-right"><a href="#"><%= current_usuario.email %></a> <%= link_to('(Sair)', destroy_usuario_session_path, :method => :delete) %></p>
-        <% else %>        
+        <% else %>
           <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "pull-right"}) do |f| %>
             <%= f.email_field :email, :class => 'input-small', :placeholder => 'Email' %>
             <%= f.password_field :password, :class => 'input-small', :placeholder => 'Senha' %>
@@ -68,4 +70,3 @@
   </div>
 </body>
 </html>
-

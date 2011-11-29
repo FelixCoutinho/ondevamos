@@ -3,14 +3,14 @@ Ondevamos::Application.routes.draw do
   # controller de votos.
   root :to => "votos#index"
 
-  match '/usuario' => "votos#home", :as => :usuario_root
+  #match '/usuario' => "votos#home", :as => :usuario_root
 
   # Configuração para que o Devise considere o recurso 'usuarios' para fazer
   # a autenticação do sistema.
   devise_for :usuarios
 
   # Configurando as rotas padrões para o controller de 'restaurantes'
-  resources :restaurantes
+  resources :restaurantes, :grupos
 
   # Rotas para os votos
   # Página inicial

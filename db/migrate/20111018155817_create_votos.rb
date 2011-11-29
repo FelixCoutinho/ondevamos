@@ -3,6 +3,7 @@ class CreateVotos < ActiveRecord::Migration
     create_table :votos do |t|
       t.references :restaurante
       t.references :usuario
+      t.references :grupo
       t.date :data
 
       t.timestamps
@@ -13,4 +14,3 @@ class CreateVotos < ActiveRecord::Migration
     drop_table :votos
   end
 end
-

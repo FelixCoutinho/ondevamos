@@ -1,4 +1,5 @@
 class Restaurante < ActiveRecord::Base
-  validates_presence_of :nome
-end
+  has_and_belongs_to_many :grupos
 
+  validates_presence_of :nome, :grupo_id
+end

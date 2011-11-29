@@ -57,6 +57,16 @@ A seguir execute a migração da base de dados, assim a base de dados vai ser
 criada e daí ficar pronta para uso:
 $ rake db:migrate
 
+Lembre-se também de adicionar as variáveis de ambiente necessárias para fazer
+com que o envio de emails funcione. Lembrando que o 'user' precisa ser de uma
+conta válida do Gmail.
+
+$ export GMAIL_SMTP_USER=username@gmail.com
+$ export GMAIL_SMTP_PASSWORD=yourpassword
+
+De preferência deixa essa configuração em um arquivo que será executado todas
+as vezes que você usar seu computador. Talvez no '.bashrc' de seu usuário.
+
 Agora basta usar seu servidor web preferido, com os devidos módulos para
 executar aplicações ruby/rails, e chamar a aplicação por meio de um browser.
 
