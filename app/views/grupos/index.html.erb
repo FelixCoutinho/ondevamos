@@ -1,0 +1,24 @@
+<h1>Grupo</h1>
+
+<table class="bordered-table zebra-striped">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+<% @grupos.each do |grupo| %>
+  <tbody>
+    <tr>
+      <td><%= grupo.nome %></td>
+      <td><%= link_to 'Editar', edit_grupo_path(grupo) %></td>
+      <td><%= link_to 'Remover', grupo, :confirm => 'Tem certeza disso?', :method => :delete %></td>
+    </tr>
+  <tbody>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Novo Grupo', new_grupo_path, :class => 'btn primary' %>

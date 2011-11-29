@@ -1,0 +1,22 @@
+<%= form_for(@grupo) do |f| %>
+<fieldset>
+  <% if @grupo.errors.any? %>
+    <div class="alert-message block-message error">
+      <ul>
+      <% @grupo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="clearfix">
+          <%= f.label :nome %>
+    <div class="input">
+      <%= f.text_field :nome, :class => 'xlarge' %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Salvar', :class => 'btn primary' %>
+  </div>
+</fieldset>
+<% end %>
