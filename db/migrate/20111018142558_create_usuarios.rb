@@ -1,6 +1,7 @@
 class CreateUsuarios < ActiveRecord::Migration
   def self.up
     create_table :usuarios do |t|
+      t.references :grupo
       t.timestamps
     end
   end

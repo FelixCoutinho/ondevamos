@@ -1,7 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  name: MyString
+mcdonalds:
+  id: 1
+  nome: McDonalds
+  grupo_id: 1
 
-two:
-  name: MyString
+baltazar:
+  id: 2
+  nome: Baltazar
+  grupo_id: 1

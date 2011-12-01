@@ -1,20 +1,20 @@
 class Voto < ActiveRecord::Base
-  has_one :usuario
-  has_one :restaurante
-  has_one :grupo
+  belongs_to :usuario
+  belongs_to :restaurante
+  belongs_to :grupo
 
-  validates_presence_of :data, :usuario_id, :restaurante_id, :grupo_id
+  validates_presence_of :data, :grupo_id, :usuario_id, :restaurante_id
 
-  def jaVotou(usuario, data = Date.today)
-    Voto.where(:usuario_id => usuario.id, :data => data).exists?
+  def jaVotou(usuario, grupo, data = Date.today)
+    Voto.where(:usuario_id => usuario.id, :data => data, :grupo_id => grupo).exists?
   end
 
-  def contagemVotacao(data = Date.today)
+  def contagemVotacao(grupo, data = Date.today)
     Voto.find(
       :all,
       :select => "restaurantes.nome as label, count(*) as total",
-      :conditions => {:data => data, :grupo => grupo},
+      :conditions => {:data => data, :grupo_id => grupo},
       :joins => "inner join restaurantes on restaurantes.id = votos.restaurante_id",
-      :group => :nome)
+      :group => [:nome, 'votos.grupo_id'])
   end
 end

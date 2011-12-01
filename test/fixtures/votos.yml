@@ -1,0 +1,13 @@
+voto_valido_1:
+  id: 1
+  usuario_id: 1
+  data: <%= Date.today %>
+  grupo_id: 2
+  restaurante_id: 2
+
+voto_valido_2:
+  id: 2
+  usuario_id: 2
+  data: <%= Date.today %>
+  grupo_id: 2
+  restaurante_id: 2

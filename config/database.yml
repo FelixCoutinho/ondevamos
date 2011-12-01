@@ -16,6 +16,7 @@ test:
   username: ondevamos
   password: ondevamos
   host: 127.0.0.1
+  port: 5433
 
 production:
   adapter: postgresql

@@ -1,9 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  email: MyString
-  senha: MyString
+joao:
+  id: 1
+  email: 'joao.silva@gmail.com'
+  encrypted_password: '4738hh9d8h9he7393h72h309'
+  grupo_id: 2
 
-two:
-  email: MyString
-  senha: MyString
+maria:
+  id: 2
+  email: 'maria.silva@gmail.com'
+  encrypted_password: '3129329jsdhje0123ue8sijd'
+  grupo_id: 2
