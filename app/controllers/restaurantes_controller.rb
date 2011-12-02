@@ -20,13 +20,11 @@ class RestaurantesController < ApplicationController
   # Cria um restaurante
   def create
     @restaurante = Restaurante.new(params[:restaurante])
-
-    respond_to do |format|
-      if @restaurante.save
-        format.html { redirect_to(restaurantes_url, :notice => 'Restaurante foi adicionado com sucesso.') }
-      else
-        format.html { render :action => "new" }
-      end
+    puts @restaurante
+    if @restaurante.save
+      redirect_to(restaurantes_url, :notice => 'Restaurante foi adicionado com sucesso.')
+    else
+      render :action => "new"
     end
   end
 
@@ -34,12 +32,10 @@ class RestaurantesController < ApplicationController
   def update
     @restaurante = Restaurante.find(params[:id])
 
-    respond_to do |format|
-      if @restaurante.update_attributes(params[:restaurante])
-        format.html { redirect_to(restaurantes_url, :notice => 'Restaurante foi atualizado com sucesso.') }
-      else
-        format.html { render :action => "edit" }
-      end
+    if @restaurante.update_attributes(params[:restaurante])
+      redirect_to(restaurantes_url, :notice => 'Restaurante foi atualizado com sucesso.')
+    else
+      render :action => "edit"
     end
   end
 
@@ -48,8 +44,6 @@ class RestaurantesController < ApplicationController
     @restaurante = Restaurante.find(params[:id])
     @restaurante.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(restaurantes_url, :notice => 'Restaurante foi removido com sucesso.') }
-    end
+    redirect_to(restaurantes_url, :notice => 'Restaurante foi removido com sucesso.')
   end
 end

@@ -1,8 +1,11 @@
 require 'test_helper'
 
 class RestaurantesControllerTest < ActionController::TestCase
+  include Devise::TestHelpers  
+
   setup do
-    @restaurante = restaurantes(:one)
+    @restaurante = restaurantes(:mcdonalds)
+    sign_in Usuario.find(2)
   end
 
   test "should get index" do
@@ -22,11 +25,6 @@ class RestaurantesControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to restaurante_path(assigns(:restaurante))
-  end
-
-  test "should show restaurante" do
-    get :show, :id => @restaurante.to_param
-    assert_response :success
   end
 
   test "should get edit" do
