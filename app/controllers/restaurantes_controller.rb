@@ -20,7 +20,6 @@ class RestaurantesController < ApplicationController
   # Cria um restaurante
   def create
     @restaurante = Restaurante.new(params[:restaurante])
-    puts @restaurante
     if @restaurante.save
       redirect_to(restaurantes_url, :notice => 'Restaurante foi adicionado com sucesso.')
     else

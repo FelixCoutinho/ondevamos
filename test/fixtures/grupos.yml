@@ -9,3 +9,8 @@ amigos:
   id: 2
   nome: 'Turma da pesada'
   usuario_id: 2
+
+coisados:
+  id: 3
+  nome: 'Coisados'
+  usuario_id: 1

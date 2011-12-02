@@ -1,5 +1,5 @@
 class Restaurante < ActiveRecord::Base
-  has_one :grupo
+  has_and_belongs_to_many :grupos, :readonly => true
 
-  validates_presence_of :nome, :grupo_id
+  validates_presence_of :nome
 end

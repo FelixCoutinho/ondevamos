@@ -1,0 +1,15 @@
+grupo_restaurante1:
+  grupo_id: 1
+  restaurante_id: 1
+
+grupo_restaurante2:
+  grupo_id: 1
+  restaurante_id: 2
+
+grupo_restaurante3:
+  grupo_id: 2
+  restaurante_id: 1
+
+grupo_restaurante4:
+  grupo_id: 2
+  restaurante_id: 2

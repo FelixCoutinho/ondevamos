@@ -3,9 +3,7 @@
 mcdonalds:
   id: 1
   nome: McDonalds
-  grupo_id: 1
 
 baltazar:
   id: 2
   nome: Baltazar
-  grupo_id: 1

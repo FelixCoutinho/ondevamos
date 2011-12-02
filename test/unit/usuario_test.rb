@@ -45,6 +45,6 @@ class UsuarioTest < ActiveSupport::TestCase
 
   test "associacao com grupo" do
     usuario = Usuario.find(1)
-    assert_equal 2, usuario.grupo.id
+    assert_equal 2, usuario.grupos.length
   end
 end

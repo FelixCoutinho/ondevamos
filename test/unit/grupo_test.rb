@@ -39,7 +39,7 @@ class GrupoTest < ActiveSupport::TestCase
 
   test "associacao com usuarios" do
     grupo = Grupo.find(2)
-    assert_equal 2, grupo.usuarios.length
+    assert_equal 1, grupo.usuarios.length
   end
 
   test "associacao com restaurantes" do
@@ -50,5 +50,11 @@ class GrupoTest < ActiveSupport::TestCase
   test "associacao com usuario proprietario" do
     grupo = Grupo.find(1)
     assert_equal 'joao.silva@gmail.com', grupo.usuario.email
+  end
+
+  test "associar restaurante com grupo" do
+    grupo = Grupo.find(1)
+    grupo.restaurantes << Restaurante.find(2)
+    assert grupo.save
   end
 end

@@ -3,7 +3,7 @@ class GruposController < ApplicationController
   before_filter :authenticate_usuario!
 
   def index
-    @grupos = Grupo.all
+    @grupos = Grupo.where(:usuario_id => current_usuario)
   end
 
   def new
@@ -23,7 +23,7 @@ class GruposController < ApplicationController
   end
 
   def update
-    @grupo = Grupo.find(params[:id])
+    @grupo = Grupo.where(:usuario_id => current_usuario).find(params[:id])
 
     if @grupo.update_attributes(params[:grupo])
       redirect_to(grupos_url, :notice => 'Grupo foi atualizado com sucesso.')
@@ -33,14 +33,14 @@ class GruposController < ApplicationController
   end
 
   def destroy
-    @grupo = Grupo.find(params[:id])
+    @grupo = Grupo.where(:usuario_id => current_usuario).find(params[:id])
     @grupo.destroy
 
     redirect_to(grupos_url, :notice => 'Grupo foi removido com sucesso.')
   end
 
   def edit
-    @grupo = Grupo.find(params[:id])
+    @grupo = Grupo.where(:usuario_id => current_usuario).find(params[:id])
   end
 
   def associar

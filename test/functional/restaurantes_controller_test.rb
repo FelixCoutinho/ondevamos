@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class RestaurantesControllerTest < ActionController::TestCase
-  include Devise::TestHelpers  
+  include Devise::TestHelpers
 
   setup do
     @restaurante = restaurantes(:mcdonalds)
@@ -17,6 +17,10 @@ class RestaurantesControllerTest < ActionController::TestCase
   test "should get new" do
     get :new
     assert_response :success
+  end
+
+  test "criar" do
+    post :create, :restaurante => @restaurante.attributes
   end
 
   test "should create restaurante" do

@@ -1,0 +1,11 @@
+grupo_usuario1:
+  usuario_id: 1
+  grupo_id: 1
+
+grupo_usuario2:
+  usuario_id: 1
+  grupo_id: 2
+
+grupo_usuario3:
+  usuario_id: 2
+  grupo_id: 1
