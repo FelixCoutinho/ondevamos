@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(:version => 20111202142748) do
 
   create_table "restaurantes", :force => true do |t|
     t.string   "nome"
-    t.integer  "grupo_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

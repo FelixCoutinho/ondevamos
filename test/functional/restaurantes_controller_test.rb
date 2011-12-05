@@ -19,10 +19,6 @@ class RestaurantesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "criar" do
-    post :create, :restaurante => @restaurante.attributes
-  end
-
   test "should create restaurante" do
     assert_difference('Restaurante.count') do
       post :create, :restaurante => @restaurante.attributes
