@@ -43,6 +43,11 @@ class GruposController < ApplicationController
     @grupo = Grupo.where(:usuario_id => current_usuario).find(params[:id])
   end
 
+  def show
+    @grupo = Grupo.where(:usuario_id => current_usuario).find(params[:id])
+    @restaurante = Restaurante.new
+  end
+
   def associar
 
   end

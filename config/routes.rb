@@ -10,7 +10,18 @@ Ondevamos::Application.routes.draw do
   devise_for :usuarios
 
   # Configurando as rotas padrões para o controller de 'restaurantes'
-  resources :restaurantes, :grupos
+  resources :restaurantes, :except => 'show'
+
+  # Configurando as rotas padrões para o controller de 'grupos'
+  resources :grupos
+
+  # Busca de restaurantes
+  match "/restaurantes/search" => "restaurantes#search", :via => :get
+
+  # Auto complete de restaurante
+  resources :restaurantes do
+    get :autocomplete_restaurante_nome, :on => :collection
+  end
 
   # Rotas para os votos
   # Página inicial

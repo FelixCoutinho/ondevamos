@@ -2,6 +2,10 @@ class RestaurantesController < ApplicationController
   # Faz com que esse controller passe pelo filtro de autenticação
   before_filter :authenticate_usuario!
 
+  autocomplete :restaurante, :nome do |items|
+     CustomJSON::Encoder.encode(items)
+  end
+
   # Action inicial
   def index
     @restaurantes = Restaurante.all
@@ -44,5 +48,9 @@ class RestaurantesController < ApplicationController
     @restaurante.destroy
 
     redirect_to(restaurantes_url, :notice => 'Restaurante foi removido com sucesso.')
+  end
+
+  def search
+    Restaurante.all.to_json
   end
 end

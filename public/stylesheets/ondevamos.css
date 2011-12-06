@@ -27,3 +27,19 @@ h1 {
     color: gray;
 }
 
+ul.ui-autocomplete {
+  list-style: none;
+  background-color: #FFFFFF;
+}
+
+ul.ui-autocomplete {
+  width:250px;
+}
+
+ul.ui-autocomplete li.ui-menu-item a.ui-corner-all {
+  cursor: pointer;
+}
+
+ul.ui-autocomplete li.ui-menu-item{
+  cursor: pointer;
+}

@@ -12,6 +12,7 @@
   <tbody>
     <tr>
       <td><%= grupo.nome %></td>
+      <td><%= link_to 'Restaurantes', grupo_path(grupo) %></td>
       <td><%= link_to 'Editar', edit_grupo_path(grupo) %></td>
       <td><%= link_to 'Remover', grupo, :confirm => 'Tem certeza disso?', :method => :delete %></td>
     </tr>

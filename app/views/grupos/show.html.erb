@@ -1,0 +1,22 @@
+<%= form_for(@grupo, :html => {:class => 'form-stacked'}) do |f| %>
+<fieldset>
+  <div class="clearfix">
+    <%= f.label 'Grupo' %>
+    <div class="input">
+      <%= f.text_field :nome, :class => 'xlarge disabled', :disabled => '' %>
+    </div>
+  </div>
+</fieldset>
+<% end %>
+<%= form_for(@restaurante, :html => {:class => 'form-stacked'}) do |f| %>
+<fieldset>
+  <div class="clearfix">
+    <%= f.label 'Buscar restaurantes' %>
+    <div class="input">
+      <%= f.autocomplete_field :nome, autocomplete_restaurante_nome_restaurantes_path, :class => 'xlarge' %>
+      <button class="btn small">Adicionar</button>
+    </div>
+
+  </div>
+</fieldset>
+<% end %>

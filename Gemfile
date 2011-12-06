@@ -1,14 +1,9 @@
 source 'http://rubygems.org'
+source 'http://gems.github.com'
 
 gem 'rails', '3.0.10'
 
-#group :development, :test do 
-#  gem 'sqlite3'
-#end
-
-#group :production do 
-  gem 'pg'
-#end
+gem 'pg'
 
 gem 'jquery-rails', '>= 1.0.12'
 
@@ -20,4 +15,12 @@ gem 'devise'
 
 gem 'heroku'
 
-gem 'rcov'
+gem 'rails3-jquery-autocomplete'
+
+group :test do
+  gem 'rcov'
+
+  gem 'cucumber'
+
+  gem 'webrat'
+end
