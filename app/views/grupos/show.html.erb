@@ -8,15 +8,38 @@
   </div>
 </fieldset>
 <% end %>
-<%= form_for(@restaurante, :html => {:class => 'form-stacked'}) do |f| %>
+<%= form_for(@restaurante, :url => '/grupos/associar', :html => {:class => 'form-stacked'}, :remote => true) do |f| %>
 <fieldset>
   <div class="clearfix">
     <%= f.label 'Buscar restaurantes' %>
     <div class="input">
-      <%= f.autocomplete_field :nome, autocomplete_restaurante_nome_restaurantes_path, :class => 'xlarge' %>
+      <%= f.hidden_field @grupo %>
+      <%= f.autocomplete_field :nome, autocomplete_restaurante_nome_restaurantes_path, :id_element => '#restaurante_id', :class => 'xlarge'%>
       <button class="btn small">Adicionar</button>
     </div>
-
   </div>
 </fieldset>
 <% end %>
+<h2>Restaurantes</h2>
+
+<table class="bordered-table zebra-striped">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+<% @grupo.restaurantes do |restaurante| %>
+  <tbody>
+    <tr>
+      <td><%= restaurante.nome %></td>
+      <td><%= link_to 'Remover', desassociar_grupo_path, :confirm => 'Tem certeza disso?', :method => :delete %></td>
+    </tr>
+  <tbody>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Novo Grupo', new_grupo_path, :class => 'btn primary' %>

@@ -46,9 +46,16 @@ class GruposController < ApplicationController
   def show
     @grupo = Grupo.where(:usuario_id => current_usuario).find(params[:id])
     @restaurante = Restaurante.new
+    @restaurante.grupos << @grupo
   end
 
   def associar
+    @restaurante = Restaurante.new(params[:restaurante])
+    @restaurante.save
+    render :json => @restaurante
+  end
+
+  def desassociar
 
   end
 end
