@@ -5,7 +5,7 @@ class Grupo < ActiveRecord::Base
 
   validates_presence_of :nome, :usuario_id
 
-  validate :verificar_propietario
+  #validate :verificar_propietario
 
   def verificar_propietario
     if usuario_id != current_usuario.id
@@ -13,7 +13,4 @@ class Grupo < ActiveRecord::Base
     end
   end
 
-  def find(usuario)
-    Grupo.where(:usuario_id => usuario.id)
-  end
 end

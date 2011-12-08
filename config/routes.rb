@@ -34,6 +34,8 @@ Ondevamos::Application.routes.draw do
   # Submissão para página de criação do voto
   match "/votos" => "votos#create", :via => :post
 
+  match "/votos/jaVotou/:grupo_id" => "votos#jaVotou", :via => :get
+
   # Links do menu
   match "/sobre" => "menu#sobre", :via => :get
   match "/contato" => "menu#contato", :via => :get

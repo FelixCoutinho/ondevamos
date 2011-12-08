@@ -1,4 +1,4 @@
-<%= select_tag "grupo_id", options_from_collection_for_select(@grupos, "id", "nome"), { :include_blank => 'Selecione um Grupo'} %>
+<%= select_tag "grupo", options_from_collection_for_select(@grupos, "id", "nome"), { :include_blank => 'Selecione um Grupo'} %>
 <br />
 <br />
 <h1><%= I18n.l Date.today, :format => "%A, %d de %B de %Y"  %></h1>

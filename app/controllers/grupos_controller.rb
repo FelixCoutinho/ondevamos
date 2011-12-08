@@ -4,7 +4,7 @@ class GruposController < ApplicationController
   before_filter :authenticate_usuario!
 
   def index
-    @grupos = Grupo.find(:usuario_id => current_usuario)
+    @grupos = Grupo.where(:usuario_id => current_usuario)
   end
 
   def new
