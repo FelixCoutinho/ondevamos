@@ -1,45 +1,33 @@
-<%= form_for(@grupo, :html => {:class => 'form-stacked'}) do |f| %>
-<fieldset>
-  <div class="clearfix">
-    <%= f.label 'Grupo' %>
-    <div class="input">
-      <%= f.text_field :nome, :class => 'xlarge disabled', :disabled => '' %>
-    </div>
-  </div>
-</fieldset>
-<% end %>
-<%= form_for(@restaurante, :url => '/grupos/associar', :html => {:class => 'form-stacked'}, :remote => true) do |f| %>
+<% @grupos.each do |grupo| %>
+<h2>Restaurantes do Grupo - <a href="/grupos"><%= grupo.nome %></a></h2>
+
+<%= form_for(@restaurante, :url => '/grupos/associar', :html => {:class => 'form-stacked'}) do |f| %>
 <fieldset>
   <div class="clearfix">
     <%= f.label 'Buscar restaurantes' %>
     <div class="input">
-      <%= f.hidden_field @grupo %>
-      <%= f.autocomplete_field :nome, autocomplete_restaurante_nome_restaurantes_path, :id_element => '#restaurante_id', :class => 'xlarge'%>
-      <button class="btn small">Adicionar</button>
+      <%= hidden_field_tag 'grupo_id', grupo.id  %>
+      <%= f.select :id, Restaurante.order(:nome).collect {|restaurante| [restaurante.nome, restaurante.id] } %>
+      <button class="btn primary">Associar</button>
     </div>
   </div>
 </fieldset>
 <% end %>
-<h2>Restaurantes</h2>
 
 <table class="bordered-table zebra-striped">
   <thead>
     <tr>
       <th>Nome</th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
-<% @grupo.restaurantes do |restaurante| %>
+<% grupo.restaurantes.each do |restaurante| %>
   <tbody>
     <tr>
       <td><%= restaurante.nome %></td>
-      <td><%= link_to 'Remover', desassociar_grupo_path, :confirm => 'Tem certeza disso?', :method => :delete %></td>
+      <td><%= link_to 'Desassociar', '/grupos/desassociar/'+restaurante.id.to_s+'/'+grupo.id.to_s, :confirm => 'Tem certeza disso?', :method => :delete %></td>
     </tr>
   <tbody>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'Novo Grupo', new_grupo_path, :class => 'btn primary' %>
+<% end %>

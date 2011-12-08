@@ -10,17 +10,18 @@ class VotosController < ApplicationController
   # Action inicial do controller de votos
   def home
     @voto = Voto.new
+    @grupos = Grupo.where(:usuario_id => current_usuario)
     # Resgatando usuário que está autenticado
     @voto.usuario = Usuario.find(current_usuario.id)
     @voto.data = Date.today
     @restaurantes = Restaurante.all
-    @jaVotou = @voto.jaVotou @voto.usuario 
+    @jaVotou = @voto.jaVotou @voto.usuario, @grupos.first
     #Verificando se o usuário já votou no dia de hoje
     if @jaVotou
       # Google Visualizer (Gráfico da votação)
       data_table = GoogleVisualr::DataTable.new
-      data_table.new_column('string', 'Restaurante') 
-      data_table.new_column('number', 'Voto(s)') 
+      data_table.new_column('string', 'Restaurante')
+      data_table.new_column('number', 'Voto(s)')
       @voto.contagemVotacao.each do |voto|
           # Depois da migração para Postgres foi necessário transformar o total
           # em Integer
@@ -39,8 +40,8 @@ class VotosController < ApplicationController
     # Usuário que está autenticado
     @voto.usuario = Usuario.find(current_usuario.id)
     # Simulando o formulário para validação do ActiveRecord
-    @voto.usuario_id = current_usuario.id    
-    @jaVotou = @voto.jaVotou @voto.usuario 
+    @voto.usuario_id = current_usuario.id
+    @jaVotou = @voto.jaVotou @voto.usuario
 
     if @jaVotou
       @restaurantes = Restaurante.all
@@ -48,7 +49,7 @@ class VotosController < ApplicationController
       redirect_to :action => "home"
     end
 
-    if @voto.save 
+    if @voto.save
       @restaurantes = Restaurante.all
       flash[:notice] = 'Seu voto foi recebido.'
       # Fazendo verificação de existencia de voto
@@ -63,4 +64,3 @@ class VotosController < ApplicationController
     end
   end
 end
-

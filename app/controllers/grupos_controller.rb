@@ -1,9 +1,10 @@
+# encoding: UTF-8
 class GruposController < ApplicationController
   # Faz com que esse controller passe pelo filtro de autenticação
   before_filter :authenticate_usuario!
 
   def index
-    @grupos = Grupo.where(:usuario_id => current_usuario)
+    @grupos = Grupo.find(:usuario_id => current_usuario)
   end
 
   def new
@@ -44,18 +45,26 @@ class GruposController < ApplicationController
   end
 
   def show
-    @grupo = Grupo.where(:usuario_id => current_usuario).find(params[:id])
+    @grupos = Grupo.where(:usuario_id => current_usuario)
     @restaurante = Restaurante.new
-    @restaurante.grupos << @grupo
   end
 
   def associar
-    @restaurante = Restaurante.new(params[:restaurante])
-    @restaurante.save
-    render :json => @restaurante
+    @restaurante = Restaurante.find(params[:restaurante][:id])
+    @grupo = Grupo.where(:usuario_id => current_usuario).find(params[:grupo_id])
+    if @grupo.restaurantes.include? @restaurante
+      redirect_to(@grupo, :notice => 'Restaurante já está associado ao grupo.')
+    else
+      @grupo.restaurantes << @restaurante
+      @grupo.save
+      redirect_to(@grupo, :notice => 'Restaurante foi associado ao grupo com sucesso.')
+    end
   end
 
   def desassociar
-
+    @grupo = Grupo.where(:usuario_id => current_usuario).find(params[:grupo_id])
+    @restaurante = Restaurante.find(params[:id])
+    @grupo.restaurantes.delete @restaurante
+    redirect_to(@grupo, :notice => 'Restaurante foi desassociado do grupo com sucesso.')
   end
 end

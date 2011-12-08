@@ -8,9 +8,9 @@
   </ul>
 </div>
 <% end %>
-<ul class="inputs-list">
-<% @restaurantes.each do |restaurante| %>
-  <li class="optionRadio">
+<ul class="inputs-list opcoes">
+<% @grupos.first.restaurantes.each do |restaurante| %>
+  <li class="optionRadio opcao">
     <%= f.radio_button :restaurante_id, restaurante.id   %>
     <%= restaurante.nome %>
   </li>

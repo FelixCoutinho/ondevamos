@@ -16,11 +16,11 @@ Ondevamos::Application.routes.draw do
   resources :grupos
 
   # Busca de restaurantes
-  match "/restaurantes/search" => "restaurantes#search", :via => :get
+  match "/restaurantes/search/:grupo_id" => "restaurantes#search", :via => :get
 
   # Associar restaurante com grupo
   match "/grupos/associar" => "grupos#associar", :via => :post
-  match "/grupos/desassociar" => "grupos#desassociar", :via => :post
+  match "/grupos/desassociar/:id/:grupo_id" => "grupos#desassociar", :via => :delete
 
   # Auto complete de restaurante
   resources :restaurantes do

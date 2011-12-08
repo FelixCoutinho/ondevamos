@@ -34,7 +34,6 @@ class RestaurantesController < ApplicationController
   # Atualiza um restaurante
   def update
     @restaurante = Restaurante.find(params[:id])
-
     if @restaurante.update_attributes(params[:restaurante])
       redirect_to(restaurantes_url, :notice => 'Restaurante foi atualizado com sucesso.')
     else
@@ -46,11 +45,10 @@ class RestaurantesController < ApplicationController
   def destroy
     @restaurante = Restaurante.find(params[:id])
     @restaurante.destroy
-
     redirect_to(restaurantes_url, :notice => 'Restaurante foi removido com sucesso.')
   end
 
   def search
-    Restaurante.all.to_json
+    render :json => Grupo.find(params[:grupo_id]).restaurantes
   end
 end
