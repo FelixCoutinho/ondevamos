@@ -1,7 +1,7 @@
 <%= select_tag "grupo", options_from_collection_for_select(@grupos, "id", "nome"), { :include_blank => 'Selecione um Grupo'} %>
 <br />
 <br />
-<h1><%= I18n.l Date.today, :format => "%A, %d de %B de %Y"  %></h1>
+<h1></h1>
 <% if @jaVotou %>
 <div class="alert-message block-message success">
   <p>Você já votou para 'Onde vamos' no dia de hoje. Obrigado.</p>

@@ -22,11 +22,6 @@ Ondevamos::Application.routes.draw do
   match "/grupos/associar" => "grupos#associar", :via => :post
   match "/grupos/desassociar/:id/:grupo_id" => "grupos#desassociar", :via => :delete
 
-  # Auto complete de restaurante
-  resources :restaurantes do
-    get :autocomplete_restaurante_nome, :on => :collection
-  end
-
   # Rotas para os votos
   # Página inicial
   match "/votos" => "votos#index", :via => :get
