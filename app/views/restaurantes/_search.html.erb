@@ -1,0 +1,10 @@
+<ul class="inputs-list unstyled" id="restaurantes_opcoes">
+<% @restaurantes.each do |restaurante| %>
+  <li class="optionRadio" id="restaurante_opcao">
+    <label>
+      <%= radio_button_tag 'voto[restaurante_id]', restaurante.id   %>
+      <span><%= restaurante.nome %></span>
+    </label>
+  </li>
+<% end %>
+</ul>
