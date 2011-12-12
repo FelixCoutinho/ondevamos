@@ -2,84 +2,59 @@
 >>>Onde vamos?>>>
 */
 body {
-    padding-top: 40px;
+  padding-top: 40px;
 }
 
 html, body {
-    background-color: #EEEEEE;
+  background-color: #EEEEEE;
 }
 
 .container {
-    width: 820px;
+  width: 820px;
 }
 
 .content {
-    background-color: #FFFFFF;
-    border-radius: 0 0 6px 6px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-    margin: 0 -20px;
-    padding: 20px;
+  background-color: #FFFFFF;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  margin: 0 -20px;
+  padding: 20px;
 }
 
 .page-header {
-    background-color: #F5F5F5;
-    margin: -20px -20px 20px;
-    padding: 20px 20px 10px;
-}
-
-.content .span10, .content .span4 {
-    min-height: 500px;
+  background-color: #F5F5F5;
+  margin: -20px -20px 20px;
+  padding: 20px 20px 10px;
 }
 
 .content .span4 {
-    border-left: 1px solid #EEEEEE;
-    margin-left: 0;
-    padding-left: 19px;
+  border-left: 1px solid #EEEEEE;
+  margin-left: 0;
+  padding-left: 19px;
 }
 
 .content .span10, .content .span4 {
-    min-height: 500px;
+  min-height: 100px;
 }
 
 .container > footer p {
-    text-align: center;
-}
-
-.optionRadio {
-    font-size: 18px;
-    font-weight: 200;
-    line-height: 27px;
-}
-
-.hero-unit {
-    padding: 40px;
+  text-align: center;
 }
 
 .actions-options {
-    padding-top:10px;
-}
-
-h1 {
-    padding-bottom:10px;
+  padding-top:10px;
 }
 
 .alert-message.block-message ul li{
-    color: gray;
+  color: gray;
 }
 
-ul.ui-autocomplete {
-  list-style: none;
-  background-color: #FFFFFF;
+.row > [class*="span"] {
+  display: inline;
+  float: left;
+  margin-right: 20px;
 }
 
-ul.ui-autocomplete {
-  width:250px;
-}
-
-ul.ui-autocomplete li.ui-menu-item a.ui-corner-all {
-  cursor: pointer;
-}
-
-ul.ui-autocomplete li.ui-menu-item{
-  cursor: pointer;
+.span4 {
+  width: 180px;
 }

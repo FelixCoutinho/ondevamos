@@ -8,16 +8,21 @@
   </ul>
 </div>
 <% end %>
-<ul class="inputs-list opcoes">
+<p>
+<%= select_tag :grupo_id, options_from_collection_for_select(@grupos, "id", "nome"),
+{ :include_blank => 'Selecione um Grupo'} %>
+</p>
+<ul class="inputs-list unstyled" id="restaurantes_opcoes">
 <% @grupos.first.restaurantes.each do |restaurante| %>
-  <li class="optionRadio opcao">
-    <%= f.radio_button :restaurante_id, restaurante.id   %>
-    <%= restaurante.nome %>
+  <li class="optionRadio" id="restaurante_opcao">
+    <label>
+      <%= f.radio_button :restaurante_id, restaurante.id   %>
+      <span><%= restaurante.nome %></span>
+    </label>
   </li>
 <% end %>
 </ul>
 <div class="actions-options">
-<%= f.submit 'Votar', :class => 'btn primary large'%>
+<%= f.submit 'Votar', :class => 'btn primary'%>
 </div>
-<%= f.hidden_field :grupo_id  %>
 <% end %>

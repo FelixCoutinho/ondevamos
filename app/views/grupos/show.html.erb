@@ -1,5 +1,6 @@
+<%= link_to 'Voltar', grupos_path %>
 <% @grupos.each do |grupo| %>
-<h2>Restaurantes do Grupo - <a href="/grupos"><%= grupo.nome %></a></h2>
+<h2>Restaurantes do Grupo - <a href="#"><%= grupo.nome %></a></h2>
 
 <%= form_for(@restaurante, :url => '/grupos/associar', :html => {:class => 'form-stacked'}) do |f| %>
 <fieldset>
@@ -31,3 +32,4 @@
 <% end %>
 </table>
 <% end %>
+<%= link_to 'Voltar', grupos_path %>

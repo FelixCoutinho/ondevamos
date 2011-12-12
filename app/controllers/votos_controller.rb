@@ -14,8 +14,9 @@ class VotosController < ApplicationController
     # Resgatando usuário que está autenticado
     @voto.usuario = Usuario.find(current_usuario.id)
     @voto.data = Date.today
-    @restaurantes = Restaurante.all
-    @jaVotou = @voto.jaVotou @voto.usuario, @grupos.first
+    @grupo = @grupos.first
+    @restaurantes = @grupo.restaurantes
+    @jaVotou = @voto.jaVotou @voto.usuario, @grupo
     #Verificando se o usuário já votou no dia de hoje
     if @jaVotou
       # Google Visualizer (Gráfico da votação)
@@ -27,7 +28,7 @@ class VotosController < ApplicationController
           # em Integer
           data_table.add_row([voto.label, voto.total.to_i])
         end
-      option = { width: 860, height: 300 }
+      option = { width: 527.8, height: 300 }
       # Configurando para gráfico de estilo 'pizza'
       @chart = GoogleVisualr::Interactive::PieChart.new(data_table, option)
     end
@@ -68,6 +69,11 @@ class VotosController < ApplicationController
     @voto = Voto.new
     @grupo = Grupo.where(:usuario_id => current_usuario).find(params[:grupo_id])
     @jaVotou = @voto.jaVotou current_usuario, @grupo
-    render :json => @jaVotou
+    #render :json => @jaVotou
+    @voto = Voto.new
+    @voto.usuario = Usuario.find(current_usuario.id)
+    @voto.data = Date.today
+    @restaurantes = Grupo.find(params[:grupo_id]).restaurantes
+    render :partial => "home.html", :collection => @restaurantes, :layout => false
   end
 end

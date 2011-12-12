@@ -3,7 +3,7 @@ Ondevamos::Application.routes.draw do
   # controller de votos.
   root :to => "votos#index"
 
-  #match '/usuario' => "votos#home", :as => :usuario_root
+  match '/usuario' => "votos#home", :as => :usuario_root
 
   # Configuração para que o Devise considere o recurso 'usuarios' para fazer
   # a autenticação do sistema.

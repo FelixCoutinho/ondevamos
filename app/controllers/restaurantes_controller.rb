@@ -49,6 +49,7 @@ class RestaurantesController < ApplicationController
   end
 
   def search
-    render :json => Grupo.find(params[:grupo_id]).restaurantes
+    @restaurantes = Grupo.find(params[:grupo_id]).restaurantes
+    render :partial => "search.html", :collection => @restaurantes, :layout => false
   end
 end
