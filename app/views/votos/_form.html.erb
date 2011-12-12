@@ -8,12 +8,9 @@
   </ul>
 </div>
 <% end %>
-<p>
-<%= select_tag :grupo_id, options_from_collection_for_select(@grupos, "id", "nome"),
-{ :include_blank => 'Selecione um Grupo'} %>
-</p>
+<% if !@jaVotou && !@voto.grupo_id.nil?%>
 <ul class="inputs-list unstyled" id="restaurantes_opcoes">
-<% @grupos.first.restaurantes.each do |restaurante| %>
+<% @restaurantes.each do |restaurante| %>
   <li class="optionRadio" id="restaurante_opcao">
     <label>
       <%= f.radio_button :restaurante_id, restaurante.id   %>
@@ -25,4 +22,5 @@
 <div class="actions-options">
 <%= f.submit 'Votar', :class => 'btn primary'%>
 </div>
+<% end %>
 <% end %>

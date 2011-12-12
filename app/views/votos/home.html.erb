@@ -1,15 +1,5 @@
-<% if @jaVotou %>
 <p>
-<%= select_tag :grupo_id, options_from_collection_for_select(@grupos, "id", "nome", @grupo.id),
+<%= select_tag :grupo_id, options_from_collection_for_select(@grupos, "id", "nome", @voto.grupo_id),
 { :include_blank => 'Selecione um Grupo'} %>
 </p>
-<div id="area_votacao">
-  <div class="alert-message block-message info">
-    <p>Você já votou para 'Onde vamos' com esse Grupo no dia de hoje. Obrigado.</p>
-  </div>
-  <div id="grafico"></div>
-  <%= render_chart(@chart, 'grafico') %>
-  <% else %>
-  <%= render 'form' %>
-  <% end %>
-</div>
+<%= render 'votacao' %>
