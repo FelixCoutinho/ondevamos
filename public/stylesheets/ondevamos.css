@@ -58,3 +58,7 @@ html, body {
 .span4 {
   width: 180px;
 }
+
+p.grupos {
+  margin-bottom: 18px;
+}

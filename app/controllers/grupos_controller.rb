@@ -4,7 +4,7 @@ class GruposController < ApplicationController
   before_filter :authenticate_usuario!
 
   def index
-    @grupos = Grupo.where(:usuario_id => current_usuario)
+    @grupos = Grupo.all
   end
 
   def new
@@ -49,11 +49,11 @@ class GruposController < ApplicationController
     @restaurante = Restaurante.new
   end
 
-  def associar
+  def associarRestaurante
     @restaurante = Restaurante.find(params[:restaurante][:id])
     @grupo = Grupo.where(:usuario_id => current_usuario).find(params[:grupo_id])
     if @grupo.restaurantes.include? @restaurante
-      redirect_to(@grupo, :notice => 'Restaurante já está associado ao grupo.')
+      redirect_to(@grupo, :info => 'Restaurante já está associado ao grupo.')
     else
       @grupo.restaurantes << @restaurante
       @grupo.save
@@ -61,10 +61,33 @@ class GruposController < ApplicationController
     end
   end
 
-  def desassociar
+  def desassociarRestaurante
     @grupo = Grupo.where(:usuario_id => current_usuario).find(params[:grupo_id])
     @restaurante = Restaurante.find(params[:id])
     @grupo.restaurantes.delete @restaurante
     redirect_to(@grupo, :notice => 'Restaurante foi desassociado do grupo com sucesso.')
+  end
+
+  def associarUsuario
+    @usuario = current_usuario
+    @grupo = Grupo.find(params[:grupo_id])
+    if @grupo.usuarios.include? @usuario
+      redirect_to(grupos_path, :info => 'Usuário já está associado ao grupo.')
+    else
+      @grupo.usuarios << @usuario
+      @grupo.save
+      redirect_to(grupos_path, :notice => 'Usuário foi associado ao grupo com sucesso.')
+    end
+  end
+
+  def desassociarUsuario
+    @usuario = current_usuario
+    @grupo = Grupo.find(params[:grupo_id])
+    if @grupo.usuarios.include? @usuario
+      @grupo.usuarios.delete @usuario
+      redirect_to(grupos_path, :notice => 'Usuário foi desasociado do grupo com sucesso.')
+    else
+      redirect_to(grupos_path, :info => 'Usuário não estava associado ao grupo.')
+    end
   end
 end

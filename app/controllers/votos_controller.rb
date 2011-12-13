@@ -10,16 +10,10 @@ class VotosController < ApplicationController
   # Action inicial do controller de votos
   def home
     @voto = Voto.new
-    @grupos = Grupo.where(:usuario_id => current_usuario)
-    # Resgatando usuário que está autenticado
     @voto.usuario = Usuario.find(current_usuario.id)
     @voto.data = Date.today
-    #@grupo = @grupos.first
-    #@restaurantes = @grupo.restaurantes
-    #@jaVotou = @voto.jaVotou @voto.usuario, @grupo
-    #Verificando se o usuário já votou no dia de hoje
-    #if @jaVotou
-    #end
+    @grupos = Grupo.where(:usuario_id => current_usuario)
+    @grupos + @voto.usuario.grupos
   end
 
   # Adiciona/cria um voto
@@ -44,14 +38,14 @@ class VotosController < ApplicationController
         data_table.new_column('string', 'Restaurante')
         data_table.new_column('number', 'Voto(s)')
         @voto.contagemVotacao(@grupo).each do |voto|
-            data_table.add_row([voto.label, voto.total.to_i])
-          end
+          data_table.add_row([voto.label, voto.total.to_i])
+        end
         option = { width: 527.8, height: 300 }
         # Configurando para gráfico de estilo 'pizza'
         @chart = GoogleVisualr::Interactive::PieChart.new(data_table, option)
         flash[:notice] = 'Seu voto foi recebido.'
         @jaVotou = @voto.jaVotou @voto.usuario, @grupo
-        redirect_to :action => "home"
+        render :action => "home"
       else
         render :action => "home"
       end

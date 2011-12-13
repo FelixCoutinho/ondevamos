@@ -19,8 +19,10 @@ Ondevamos::Application.routes.draw do
   match "/restaurantes/search/:grupo_id" => "restaurantes#search", :via => :get
 
   # Associar restaurante com grupo
-  match "/grupos/associar" => "grupos#associar", :via => :post
-  match "/grupos/desassociar/:id/:grupo_id" => "grupos#desassociar", :via => :delete
+  match "/grupos/associarRestaurante" => "grupos#associarRestaurante", :via => :post
+  match "/grupos/desassociarRestaurante/:id/:grupo_id" => "grupos#desassociarRestaurante", :via => :delete
+  match "/grupos/associarUsuario/:grupo_id" => "grupos#associarUsuario", :via => :get
+  match "/grupos/desassociarUsuario/:grupo_id" => "grupos#desassociarUsuario", :via => :delete
 
   # Rotas para os votos
   # Página inicial

@@ -7,15 +7,37 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
 <% @grupos.each do |grupo| %>
   <tbody>
     <tr>
       <td><%= grupo.nome %></td>
-      <td><%= link_to 'Restaurantes', grupo_path(grupo) %></td>
-      <td><%= link_to 'Editar', edit_grupo_path(grupo) %></td>
-      <td><%= link_to 'Remover', grupo, :confirm => 'Tem certeza disso?', :method => :delete %></td>
+      <td>
+      <% if grupo.usuario == current_usuario %>
+      <%= link_to 'Restaurantes', grupo_path(grupo) %>
+      <% end %>
+      </td>
+      <td>
+      <% if grupo.usuario != current_usuario %>
+      <% if grupo.usuarios.include? current_usuario %>
+      <%= link_to 'Desasociar-se', '/grupos/desasociarUsuario/'+grupo.id.to_s, :confirm => 'Tem certeza disso?', :method => :delete %>
+      <% else %>
+      <%= link_to 'Associar-se', '/grupos/associarUsuario/'+grupo.id.to_s, :confirm => 'Tem certeza disso?', :method => :get %>
+      <% end %>
+      <% end %>
+      </td>
+      <td>
+      <% if grupo.usuario == current_usuario %>
+      <%= link_to 'Editar', edit_grupo_path(grupo) %>
+      <% end %>
+      </td>
+      <td>
+      <% if grupo.usuario == current_usuario %>
+      <%= link_to 'Remover', grupo, :confirm => 'Tem certeza disso?', :method => :delete %>
+      <% end %>
+      </td>
     </tr>
   <tbody>
 <% end %>
@@ -24,4 +46,3 @@
 <br />
 
 <%= link_to 'Criar um Grupo', new_grupo_path, :class => 'btn primary' %>
-<%= link_to 'Associar-se', new_grupo_path, :class => 'btn' %>

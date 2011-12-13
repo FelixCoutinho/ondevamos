@@ -2,7 +2,7 @@
 <% @grupos.each do |grupo| %>
 <h2>Restaurantes do Grupo - <a href="#"><%= grupo.nome %></a></h2>
 
-<%= form_for(@restaurante, :url => '/grupos/associar', :html => {:class => 'form-stacked'}) do |f| %>
+<%= form_for(@restaurante, :url => '/grupos/associarRestaurante', :html => {:class => 'form-stacked'}) do |f| %>
 <fieldset>
   <div class="clearfix">
     <%= f.label 'Buscar restaurantes' %>
@@ -26,7 +26,7 @@
   <tbody>
     <tr>
       <td><%= restaurante.nome %></td>
-      <td><%= link_to 'Desassociar', '/grupos/desassociar/'+restaurante.id.to_s+'/'+grupo.id.to_s, :confirm => 'Tem certeza disso?', :method => :delete %></td>
+      <td><%= link_to 'Desassociar', '/grupos/desassociarRestaurante/'+restaurante.id.to_s+'/'+grupo.id.to_s, :confirm => 'Tem certeza disso?', :method => :delete %></td>
     </tr>
   <tbody>
 <% end %>

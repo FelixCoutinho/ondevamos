@@ -1,4 +1,4 @@
-<p>
+<p class="grupos">
 <%= select_tag :grupo_id, options_from_collection_for_select(@grupos, "id", "nome", @voto.grupo_id),
 { :include_blank => 'Selecione um Grupo'} %>
 </p>
