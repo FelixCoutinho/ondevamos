@@ -39,11 +39,17 @@ class VotosController < ApplicationController
         flash[:notice] = 'Desculpe, mas você só pode ter apenas 1(um) voto por dia.'
         redirect_to :action => "home"
       elsif @voto.save
+        # Google Visualizer (Gráfico da votação)
+        data_table = GoogleVisualr::DataTable.new
+        data_table.new_column('string', 'Restaurante')
+        data_table.new_column('number', 'Voto(s)')
+        @voto.contagemVotacao(@grupo).each do |voto|
+            data_table.add_row([voto.label, voto.total.to_i])
+          end
+        option = { width: 527.8, height: 300 }
+        # Configurando para gráfico de estilo 'pizza'
+        @chart = GoogleVisualr::Interactive::PieChart.new(data_table, option)
         flash[:notice] = 'Seu voto foi recebido.'
-        # Fazendo verificação de existencia de voto
-        # Foi necessário para forçar a re-checagem da tela e assim mostrar o
-        # gráfico no momento após o voto ser salvo. E não precisar recarregar
-        # a tela novamente
         @jaVotou = @voto.jaVotou @voto.usuario, @grupo
         redirect_to :action => "home"
       else

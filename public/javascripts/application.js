@@ -4,7 +4,7 @@ $(document).ready(function(){
     if(grupo_id !== ""){
       $('div#area_votacao').load('/votos/jaVotou/'+grupo_id).
         ajaxStart(function() {
-          $(this).text('Triggered ajaxStart handler.');
+          $(this).html("<img src='/images/ajax-loader.gif' />");
       });
     }
   });
