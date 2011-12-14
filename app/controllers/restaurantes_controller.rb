@@ -8,7 +8,7 @@ class RestaurantesController < ApplicationController
 
   # Action inicial
   def index
-    @restaurantes = Restaurante.all
+    @restaurantes = Restaurante.order(:nome).all
   end
 
   # Inicia o processo de criação de um restaurante
@@ -24,6 +24,7 @@ class RestaurantesController < ApplicationController
   # Cria um restaurante
   def create
     @restaurante = Restaurante.new(params[:restaurante])
+    @restaurante.usuario = current_usuario
     if @restaurante.save
       redirect_to(restaurantes_url, :notice => 'Restaurante foi adicionado com sucesso.')
     else

@@ -13,21 +13,22 @@ class VotosController < ApplicationController
     @voto.usuario = Usuario.find(current_usuario.id)
     @voto.data = Date.today
     @grupos = Grupo.where(:usuario_id => current_usuario)
-    @grupos + @voto.usuario.grupos
+    @grupos = @grupos + @voto.usuario.grupos
   end
 
   # Adiciona/cria um voto
   def create
-    @restaurantes = Restaurante.all
+    @restaurantes = Restaurante.order(:nome).all
     @voto = Voto.new(params[:voto])
-    @grupos = Grupo.where(:usuario_id => current_usuario)
-    @voto.data = Date.today
     # Usuário que está autenticado
     @voto.usuario = Usuario.find(current_usuario.id)
     # Simulando o formulário para validação do ActiveRecord
     @voto.usuario_id = current_usuario.id
+    @grupos = Grupo.where(:usuario_id => current_usuario)
+    @grupos = @grupos + @voto.usuario.grupos
+    @voto.data = Date.today
     if @voto.valid?
-      @grupo = Grupo.where(:usuario_id => current_usuario).find(@voto.grupo)
+      @grupo = Grupo.find(@voto.grupo)
       @jaVotou = @voto.jaVotou @voto.usuario, @grupo
       if @jaVotou
         flash[:notice] = 'Desculpe, mas você só pode ter apenas 1(um) voto por dia.'
@@ -56,7 +57,7 @@ class VotosController < ApplicationController
 
   def jaVotou
     @voto = Voto.new
-    @grupo = Grupo.where(:usuario_id => current_usuario).find(params[:grupo_id])
+    @grupo = Grupo.find(params[:grupo_id])
     @jaVotou = @voto.jaVotou current_usuario, @grupo
     @voto = Voto.new
     @voto.usuario = Usuario.find(current_usuario.id)
@@ -75,6 +76,7 @@ class VotosController < ApplicationController
       @chart = GoogleVisualr::Interactive::PieChart.new(data_table, option)
     else
       @grupos = Grupo.where(:usuario_id => current_usuario)
+      @grupos = @grupos + @voto.usuario.grupos
       @restaurantes = @grupo.restaurantes
     end
     render :partial => "votacao.html", :layout => false

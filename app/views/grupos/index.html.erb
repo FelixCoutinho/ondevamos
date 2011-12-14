@@ -22,7 +22,7 @@
       <td>
       <% if grupo.usuario != current_usuario %>
       <% if grupo.usuarios.include? current_usuario %>
-      <%= link_to 'Desasociar-se', '/grupos/desasociarUsuario/'+grupo.id.to_s, :confirm => 'Tem certeza disso?', :method => :delete %>
+      <%= link_to 'Desassociar-se', '/grupos/desassociarUsuario/'+grupo.id.to_s, :confirm => 'Tem certeza disso?', :method => :delete %>
       <% else %>
       <%= link_to 'Associar-se', '/grupos/associarUsuario/'+grupo.id.to_s, :confirm => 'Tem certeza disso?', :method => :get %>
       <% end %>

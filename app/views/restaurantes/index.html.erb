@@ -12,8 +12,16 @@
   <tbody>
     <tr>
       <td><%= restaurante.nome %></td>
-      <td><%= link_to 'Editar', edit_restaurante_path(restaurante) %></td>
-      <td><%= link_to 'Remover', restaurante, :confirm => 'Tem certeza disso?', :method => :delete %></td>
+      <td>
+      <% if restaurante.usuario == current_usuario %>
+      <%= link_to 'Editar', edit_restaurante_path(restaurante) %>
+      <% end %>
+      </td>
+      <td>
+      <% if restaurante.usuario == current_usuario %>
+      <%= link_to 'Remover', restaurante, :confirm => 'Tem certeza disso?', :method => :delete %>
+      <% end %>
+      </td>
     </tr>
   <tbody>
 <% end %>
@@ -22,4 +30,3 @@
 <br />
 
 <%= link_to 'Novo Restaurante', new_restaurante_path, :class => 'btn primary' %>
-
