@@ -15,8 +15,6 @@ gem 'devise'
 
 gem 'heroku'
 
-gem 'rails3-jquery-autocomplete'
-
 group :test do
   gem 'rcov'
 
@@ -24,4 +22,3 @@ group :test do
 
   gem 'webrat'
 end
- 
