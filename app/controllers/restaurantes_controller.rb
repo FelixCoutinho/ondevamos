@@ -22,7 +22,7 @@ class RestaurantesController < ApplicationController
     @restaurante = Restaurante.new(params[:restaurante])
     @restaurante.usuario = current_usuario
     if @restaurante.save
-      redirect_to(restaurantes_url, :notice => 'Restaurante foi adicionado com sucesso.')
+      redirect_to(restaurantes_url, :notice => 'Restaurante foi adicionado.')
     else
       render :action => "new"
     end
@@ -32,7 +32,7 @@ class RestaurantesController < ApplicationController
   def update
     @restaurante = Restaurante.find(params[:id])
     if @restaurante.update_attributes(params[:restaurante])
-      redirect_to(restaurantes_url, :notice => 'Restaurante foi atualizado com sucesso.')
+      redirect_to(restaurantes_url, :notice => 'Restaurante foi atualizado.')
     else
       render :action => "edit"
     end
@@ -42,7 +42,7 @@ class RestaurantesController < ApplicationController
   def destroy
     @restaurante = Restaurante.find(params[:id])
     @restaurante.destroy
-    redirect_to(restaurantes_url, :notice => 'Restaurante foi removido com sucesso.')
+    redirect_to(restaurantes_url, :notice => 'Restaurante foi removido.')
   end
 
   def search

@@ -6,7 +6,7 @@
   <%= javascript_include_tag 'jquery.js', 'jquery-ui.min.js', 'jquery_ujs.js', 'application.js' %>
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
   <%= csrf_meta_tag %>
-
+  <% if Rails.env.production? %>
   <script type="text/javascript">
     var uvOptions = {};
     (function() {
@@ -15,7 +15,6 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
     })();
   </script>
-  <% if Rails.env.production? %>
   <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-27330817-1']);

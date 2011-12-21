@@ -1,7 +1,7 @@
 # encoding: UTF-8
 class Usuario < ActiveRecord::Base
   has_many :membros
-  has_many :grupos, :through => :membros
+  has_many :grupos, :through => :membros, :conditions => "grupos_usuarios.autorizado_em is not null"
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable

@@ -1,6 +1,6 @@
 <%= link_to 'Voltar', grupos_path %>
 <% @grupos.each do |grupo| %>
-<h2>Restaurantes do Grupo - <a href="#"><%= grupo.nome %></a></h2>
+<h2>Restaurantes do Grupo - <a name="<%= grupo.id %>"><%= grupo.nome %></a></h2>
 
 <%= form_for(@restaurante, :url => '/grupos/associarRestaurante', :html => {:class => 'form-stacked'}) do |f| %>
 <fieldset>
@@ -15,21 +15,21 @@
 </fieldset>
 <% end %>
 
-<table class="bordered-table zebra-striped">
+<table class="condensed-table  zebra-striped">
   <thead>
     <tr>
       <th>Nome</th>
       <th></th>
     </tr>
   </thead>
-<% grupo.restaurantes.each do |restaurante| %>
   <tbody>
+<% grupo.restaurantes.each do |restaurante| %>
     <tr>
       <td><%= restaurante.nome %></td>
       <td><%= link_to 'Desassociar', '/grupos/desassociarRestaurante/'+restaurante.id.to_s+'/'+grupo.id.to_s, :confirm => 'Tem certeza disso?', :method => :delete %></td>
     </tr>
-  <tbody>
 <% end %>
+  <tbody>
 </table>
 <% end %>
 <%= link_to 'Voltar', grupos_path %>

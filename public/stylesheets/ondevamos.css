@@ -62,3 +62,12 @@ html, body {
 p.grupos {
   margin-bottom: 18px;
 }
+
+td span.label.autorizacao {
+  cursor:pointer;
+}
+
+a.link_autorizacao {
+  text-decoration: none;
+
+}
