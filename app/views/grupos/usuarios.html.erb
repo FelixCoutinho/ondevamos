@@ -1,0 +1,11 @@
+<h2>Usuários do Grupo <a href="#"><%= @grupo.nome %></a></h2></h2>
+
+<table class="zebra-striped">
+<% @grupo.usuarios.each do |usuario| %>
+  <tbody>
+    <tr>
+      <td><%= usuario.email %></td>
+    </tr>
+  <tbody>
+<% end %>
+</table>

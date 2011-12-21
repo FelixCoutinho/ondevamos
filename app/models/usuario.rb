@@ -1,6 +1,7 @@
 # encoding: UTF-8
 class Usuario < ActiveRecord::Base
-  has_and_belongs_to_many :grupos
+  has_many :membros
+  has_many :grupos, :through => :membros
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
