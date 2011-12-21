@@ -23,6 +23,7 @@ Ondevamos::Application.routes.draw do
   match "/grupos/desassociarRestaurante/:id/:grupo_id" => "grupos#desassociarRestaurante", :via => :delete
   match "/grupos/associarUsuario/:grupo_id" => "grupos#associarUsuario", :via => :get
   match "/grupos/desassociarUsuario/:grupo_id" => "grupos#desassociarUsuario", :via => :delete
+  match "/grupos/usuarios/:grupo_id" => "grupos#listarUsuarios", :via => :get
 
   # Rotas para os votos
   # Página inicial

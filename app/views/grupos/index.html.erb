@@ -1,27 +1,23 @@
 <h2>Grupos</h2>
 
-<table class="bordered-table zebra-striped">
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<table class="zebra-striped">
 <% @grupos.each do |grupo| %>
   <tbody>
     <tr>
       <td><%= grupo.nome %></td>
       <td>
       <% if grupo.usuario == current_usuario %>
-      <%= link_to 'Restaurantes', grupo_path(grupo) %>
+      <%= link_to 'Usuários ('+grupo.usuarios.count.to_s+')', '/grupos/usuarios/'+grupo.id.to_s %>
+      <% end %>
+      </td>
+      <td>
+      <% if grupo.usuario == current_usuario %>
+      <%= link_to 'Restaurantes ('+grupo.restaurantes.count.to_s+')', grupo_path(grupo) %>
       <% end %>
       </td>
       <td>
       <% if grupo.usuario != current_usuario %>
-      <% if grupo.usuarios.include? current_usuario %>
+      <% if grupo.usuarios.include? current_usuario && autorizado(grupo, current_usuario) %>
       <%= link_to 'Desassociar-se', '/grupos/desassociarUsuario/'+grupo.id.to_s, :confirm => 'Tem certeza disso?', :method => :delete %>
       <% else %>
       <%= link_to 'Associar-se', '/grupos/associarUsuario/'+grupo.id.to_s, :confirm => 'Tem certeza disso?', :method => :get %>
@@ -42,7 +38,5 @@
   <tbody>
 <% end %>
 </table>
-
-<br />
 
 <%= link_to 'Criar um Grupo', new_grupo_path, :class => 'btn primary' %>

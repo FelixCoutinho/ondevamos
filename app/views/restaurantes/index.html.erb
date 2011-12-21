@@ -1,13 +1,6 @@
-<h1>Restaurantes</h1>
+<h2>Restaurantes</h2>
 
-<table class="bordered-table zebra-striped">
-  <thead>
-    <tr>
-      <th>Nome</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<table class="zebra-striped">
 <% @restaurantes.each do |restaurante| %>
   <tbody>
     <tr>
@@ -26,7 +19,5 @@
   <tbody>
 <% end %>
 </table>
-
-<br />
 
 <%= link_to 'Novo Restaurante', new_restaurante_path, :class => 'btn primary' %>

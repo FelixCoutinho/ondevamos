@@ -2,10 +2,6 @@ class RestaurantesController < ApplicationController
   # Faz com que esse controller passe pelo filtro de autenticação
   before_filter :authenticate_usuario!
 
-  autocomplete :restaurante, :nome do |items|
-     CustomJSON::Encoder.encode(items)
-  end
-
   # Action inicial
   def index
     @restaurantes = Restaurante.order(:nome).all
