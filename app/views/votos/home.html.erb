@@ -1,5 +1,18 @@
+<% if @grupos.empty? %>
+<div class="alert-message info">
+        <a href="#" class="close">×</a>
+        <p>
+          <strong>Vamos começar!!!</strong>
+        </p>
+        <p>This is an alert that needs your attention, but it’s not <a href="#">a huge priority</a> just yet.</p>
+      </div>
+<% else %>
 <p class="grupos">
-<%= select_tag :grupo_id, options_from_collection_for_select(@grupos, "id", "nome", @voto.grupo_id),
-{ :include_blank => 'Selecione um Grupo'} %>
+  <%= select_tag :grupo_id, options_from_collection_for_select(@grupos, "id", "nome", @voto.grupo_id),  { :include_blank => 'Selecione um Grupo', 'title' => "Seus grupos estão aqui", 'rel' => "twipsy"} %>
 </p>
+<script>
+$('select[rel=twipsy]').twipsy({placement: 'right', offset: 5, delayOut: 10000});
+$('select[rel=twipsy]').twipsy('show');
+</script>
+<% end %>
 <%= render 'votacao' %>
