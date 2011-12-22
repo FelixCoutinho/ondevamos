@@ -1,18 +1,19 @@
 <% if @grupos.empty? %>
-<div class="alert-message info">
-        <a href="#" class="close">×</a>
-        <p>
-          <strong>Vamos começar!!!</strong>
-        </p>
-        <p>This is an alert that needs your attention, but it’s not <a href="#">a huge priority</a> just yet.</p>
-      </div>
+<div id="box_opcoes_comeco" class="alert-message block-message info" rel="popover" data-content="Se você ainda criou ou não está associado a nenhum grupo. Agora é a hora!" data-original-title="Ainda não começou?">
+  <p>
+  </p>
+  <div class="alert-actions">
+    <%= link_to 'Criar um Grupo', new_grupo_path, :class => 'btn primary' %>
+    <%= link_to 'Encontrar um Grupo', grupos_path, :class => 'btn'  %>
+  </div>
+</div>
+<script>
+$('div[rel=popover]').popover({placement: 'below', trigger: 'manual'});
+$('div[rel=popover]').popover('show');
+</script>
 <% else %>
 <p class="grupos">
   <%= select_tag :grupo_id, options_from_collection_for_select(@grupos, "id", "nome", @voto.grupo_id),  { :include_blank => 'Selecione um Grupo', 'title' => "Seus grupos estão aqui", 'rel' => "twipsy"} %>
 </p>
-<script>
-$('select[rel=twipsy]').twipsy({placement: 'right', offset: 5, delayOut: 10000});
-$('select[rel=twipsy]').twipsy('show');
-</script>
 <% end %>
 <%= render 'votacao' %>
