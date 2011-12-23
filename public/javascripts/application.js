@@ -8,6 +8,7 @@ $(document).ready(function(){
       });
     }
   });
+  //$('.alert-message.block-message.success').fadeOut(5000);
   /**$("span#nao_autorizado.label").hover(function(){
     $(this).html('Autorizar');
     $(this).toggleClass('success');

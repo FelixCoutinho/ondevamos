@@ -1,0 +1,14 @@
+<p>Olá <%= @membro.grupo.usuario.email %>,</p>
+
+<p>Um usuário do 'Onde Vamos?' deseja fazer parte de um dos seus grupos.</p>
+
+<p>Grupo: <%= @membro.grupo.nome %></p>
+
+<p>Usuário: <%= @membro.usuario.email %></p>
+
+<p>Para aceitá-lo em seu grupo bastar clicar no link a seguir:</p>
+
+<%= link_to 'Aceitar usuário', url_for(:host => ActionMailer::Base.default_url_options[:host], :controller => "grupos", :action => "autorizar")+'/'+@membro.id %>
+
+<p>Se você não conseguir clicar no endereço, copie o endereço abaixo e cole ba barra de endereço de seu navegador.</p>
+<%= url_for(:host => ActionMailer::Base.default_url_options[:host], :controller => "grupos", :action => "autorizar")+'/'+@membro.id %>

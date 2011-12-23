@@ -1,5 +1,7 @@
-<h2>Grupos</h2>
-
+<p>
+<%= link_to 'Criar um Grupo', new_grupo_path, :class => 'btn primary' %>
+<!--<%= link_to 'Convidar amigos', new_grupo_path, :class => 'btn' %>-->
+</p>
 <table class="condensed-table zebra-striped">
   <tbody>
   <% @grupos.each do |grupo| %>
@@ -11,7 +13,7 @@
         <%= grupo.nome %></td>
         <td>
         <% if verificar_propietario(current_usuario, grupo.usuario) %>
-        <%= link_to 'Usuários ('+grupo.usuarios.count.to_s+')', '/grupos/usuarios/'+grupo.id.to_s %>
+        <%= link_to 'Usuários ('+grupo.usuarios.count.to_s+') ('+grupo.membros.count.to_s+')', '/grupos/usuarios/'+grupo.id.to_s %>
         <% end %>
         </td>
         <td>
@@ -44,5 +46,3 @@
   <% end %>
   <tbody>
 </table>
-
-<%= link_to 'Criar um Grupo', new_grupo_path, :class => 'btn primary' %>

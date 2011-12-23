@@ -13,6 +13,8 @@ gem "google_visualr", "~> 2.1.0"
 
 gem 'devise'
 
+#gem 'devise_invitable', '~> 0.4.0'
+
 gem 'heroku'
 
 group :test do

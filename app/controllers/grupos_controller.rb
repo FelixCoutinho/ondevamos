@@ -80,7 +80,7 @@ class GruposController < ApplicationController
     else
       @grupo.usuarios << @usuario
       @grupo.save
-      redirect_to(grupos_path, :notice => 'Seu pedido de associação foi realizado. Basta esperar que o proprietário desse Grupo autorize sua participação')
+      redirect_to(grupos_path, :notice => 'Seu pedido de associação foi realizado.')
     end
   end
 
