@@ -1,0 +1,12 @@
+<p>Olá <%= @membro.usuario.email %>,</p>
+
+<p>Você agora está autorizado a participar do grupo.</p>
+
+<p>Grupo: <%= @membro.grupo.nome %></p>
+
+<p>Com isso você já pode participar das votações de grupo.</p>
+
+<%= link_to 'Votação', url_for(:only_path => false, :controller=>"votos", :action=>"home") %>
+
+<p>Se você não conseguir clicar no endereço, copie o endereço abaixo e cole ba barra de endereço de seu navegador.</p>
+<%= url_for(:only_path => false, :controller=>"votos", :action=>"home") %>

@@ -13,7 +13,17 @@ $('div[rel=popover]').popover('show');
 </script>
 <% else %>
 <p class="grupos">
-  <%= select_tag :grupo_id, options_from_collection_for_select(@grupos, "id", "nome", @voto.grupo_id),  { :include_blank => 'Selecione um Grupo', 'title' => "Seus grupos estão aqui", 'rel' => "twipsy"} %>
+  <%= select_tag :grupo_id, options_from_collection_for_select(@grupos, "id", "nome", @voto.grupo_id),  { :include_blank => 'Selecione um Grupo', 'rel' => 'popover', 'data-original-title' => 'Vamos lá!', 'data-content' => 'É só selecionar um grupo e votar.'} %>
 </p>
+<script>
+$('select[rel=popover]').popover({placement: 'below', trigger: 'manual'});
+$('select[rel=popover]').popover('show');
+$("select#grupo_id").change(function(){
+    var grupo_id = $(this).find('option:selected').val();
+    if(grupo_id !== ""){
+      $('select[rel=popover]').popover('hide');
+    }
+  });
+</script>
 <% end %>
 <%= render 'votacao' %>

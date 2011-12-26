@@ -32,8 +32,13 @@
     <div class="fill">
       <div class="container">
         <div id="nome_logo">
+        <% if usuario_signed_in? %>
+        <a class="brand" href="/votos/home">Onde Vamos?
+        </a>
+        <% else %>
         <a class="brand" href="/">Onde Vamos?
         </a>
+        <% end %>
         <!-- <img src="/images/beta.png" /> -->
         </div>
         <ul class="nav">

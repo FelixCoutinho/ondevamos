@@ -1,4 +1,4 @@
-<%= link_to 'Voltar', grupos_path %>
+<%= link_to 'Voltar', grupos_path, :class => 'btn' %>
 <% @grupos.each do |grupo| %>
 <h2>Restaurantes do Grupo - <a name="<%= grupo.id %>"><%= grupo.nome %></a></h2>
 
@@ -10,11 +10,12 @@
       <%= hidden_field_tag 'grupo_id', grupo.id  %>
       <%= f.select :id, Restaurante.order(:nome).collect {|restaurante| [restaurante.nome, restaurante.id] } %>
       <button class="btn primary">Associar</button>
+      <%= link_to 'Novo Restaurante', new_restaurante_path, :class => 'btn' %>
     </div>
   </div>
 </fieldset>
 <% end %>
-
+<% if !grupo.restaurantes.empty? %>
 <table class="condensed-table  zebra-striped">
   <thead>
     <tr>
@@ -32,4 +33,4 @@
   <tbody>
 </table>
 <% end %>
-<%= link_to 'Voltar', grupos_path %>
+<% end %>
