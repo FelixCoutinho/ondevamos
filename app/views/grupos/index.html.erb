@@ -10,7 +10,8 @@
         <% if verificar_propietario(current_usuario, grupo.usuario) %>
         <span class="label notice">P</span>
         <% end %>
-        <%= grupo.nome %></td>
+        <%= grupo.nome %>
+        </td>
         <td>
         <% if verificar_propietario(current_usuario, grupo.usuario) %>
         <%= link_to 'Usuários ('+grupo.usuarios.count.to_s+') ('+grupo.membros.count.to_s+')', '/grupos/usuarios/'+grupo.id.to_s %>

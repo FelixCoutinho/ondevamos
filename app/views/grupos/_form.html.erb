@@ -15,8 +15,32 @@
       <%= f.text_field :nome, :class => 'xlarge' %>
     </div>
   </div>
+  <div class="clearfix">
+    <%= f.label :frequencia %>
+    <div class="input">
+      <%= f.select :frequencia, @frequencias,  { :include_blank => 'Selecione a frequência'}, :class => 'xlarge' %>
+    </div>
+  </div>
+  <div class="clearfix">
+    <%= f.label 'a cada' %>
+    <div class="input">
+      <%= f.select :frequencia, [1..30], {}, :class => 'mini' %>
+      <span id="a_cada_label">semana</span>
+    </div>
+  </div>
+  <div class="clearfix">
+    <%= f.label :inicio %>
+    <div class="input">
+      <%= f.text_field :inicio, :class => 'small',:value => :inicio.strftime("%d/%m/%Y") %>
+    </div>
+  </div>
   <div class="actions">
     <%= f.submit 'Salvar', :class => 'btn primary' %>
   </div>
 </fieldset>
 <% end %>
+<script>
+$(function() {
+	$("#grupo_inicio").datepicker({ dateFormat: 'dd/mm/yy', defaultDate: +0, minDate: new Date(), showOptions: {direction: 'right' }}).mask("99/99/9999", { placeholder: " " });
+});
+</script>

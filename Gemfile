@@ -17,6 +17,8 @@ gem 'devise'
 
 gem 'heroku'
 
+gem 'date_validator'
+
 group :test do
   gem 'rcov'
 

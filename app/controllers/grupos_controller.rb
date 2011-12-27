@@ -10,12 +10,14 @@ class GruposController < ApplicationController
   def new
     @grupo = Grupo.new
     @grupo.usuario = Usuario.find(current_usuario.id)
+    @grupo.inicio = DateTime.now
+    @frequencias = Grupo::Frequencias
   end
 
   def create
     @grupo = Grupo.new(params[:grupo])
     @grupo.usuario_id = current_usuario.id
-
+    @frequencias = Grupo::Frequencias
     if @grupo.save
       redirect_to(grupos_url, :notice => 'Grupo foi adicionado com sucesso')
     else
@@ -25,7 +27,7 @@ class GruposController < ApplicationController
 
   def update
     @grupo = Grupo.where(:usuario_id => current_usuario).find(params[:id])
-
+    @frequencias = Grupo::Frequencias
     if @grupo.update_attributes(params[:grupo])
       redirect_to(grupos_url, :notice => 'Grupo foi atualizado')
     else
@@ -42,6 +44,7 @@ class GruposController < ApplicationController
 
   def edit
     @grupo = Grupo.where(:usuario_id => current_usuario).find(params[:id])
+    @frequencias = Grupo::Frequencias
   end
 
   def show

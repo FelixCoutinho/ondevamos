@@ -6,3 +6,12 @@ pt-BR:
         password_confirmation: 'Confirmação da senha'
         current_password: 'Senha atual'
         remember_me: 'Mantenha-me conectado'
+      grupo:
+        frequencia: 'Frequência'
+        inicio: 'Início'
+    errors:
+      models:
+        grupo:
+          attributes:
+            inicio:
+              after_or_equal_to: 'não pode ser anterior ao dia de hoje'
