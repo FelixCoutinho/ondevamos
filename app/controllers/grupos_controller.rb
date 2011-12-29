@@ -4,7 +4,8 @@ class GruposController < ApplicationController
   before_filter :authenticate_usuario!
 
   def index
-    @grupos = Grupo.order(:nome).all
+    @meus_grupos = Grupo.where(:usuario_id => current_usuario).order(:nome)
+    @grupos = Grupo.where(["usuario_id NOT IN (?)", current_usuario]).order(:nome)
   end
 
   def new
@@ -16,6 +17,7 @@ class GruposController < ApplicationController
 
   def create
     @grupo = Grupo.new(params[:grupo])
+    logger.info @grupo.frequencia
     @grupo.usuario_id = current_usuario.id
     @frequencias = Grupo::Frequencias
     if @grupo.save

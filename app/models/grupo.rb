@@ -1,4 +1,3 @@
-
 class Grupo < ActiveRecord::Base
   has_many :membros
   has_many :usuarios, :through => :membros, :conditions => "grupos_usuarios.autorizado_em is not null"
@@ -15,5 +14,5 @@ class Grupo < ActiveRecord::Base
 
   validates_presence_of :nome, :usuario_id, :frequencia, :inicio
 
-  validates :inicio, :date => { :after_or_equal_to => Date.today }
+  validates :inicio, :date => { :after_or_equal_to => Date.today }, :unless => :id
 end

@@ -5,8 +5,8 @@ class Voto < ActiveRecord::Base
 
   validates_presence_of :data, :grupo_id, :usuario_id, :restaurante_id
 
-  def jaVotou(usuario, grupo, data = Date.today)
-    Voto.where(:usuario_id => usuario.id, :data => data, :grupo_id => grupo).exists?
+  def jaVotou(usuario, grupo)
+    Voto.where("usuario_id = ?", usuario.id).where("data >= ?", grupo.inicio).where("grupo_id = ?", grupo).exists?
   end
 
   def contagemVotacao(grupo, data = Date.today)

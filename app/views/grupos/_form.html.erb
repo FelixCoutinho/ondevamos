@@ -24,14 +24,14 @@
   <div class="clearfix">
     <%= f.label 'a cada' %>
     <div class="input">
-      <%= f.select :frequencia, [1..30], {}, :class => 'mini' %>
-      <span id="a_cada_label">semana</span>
+      <%= f.select :a_cada, (1..30), {}, :class => 'mini' %>
+      <span id="a_cada_label"></span>
     </div>
   </div>
   <div class="clearfix">
     <%= f.label :inicio %>
     <div class="input">
-      <%= f.text_field :inicio, :class => 'small',:value => :inicio.strftime("%d/%m/%Y") %>
+      <%= f.text_field :inicio, :class => 'small',:value => @grupo.inicio.strftime("%d/%m/%Y") %>
     </div>
   </div>
   <div class="actions">
@@ -42,5 +42,27 @@
 <script>
 $(function() {
 	$("#grupo_inicio").datepicker({ dateFormat: 'dd/mm/yy', defaultDate: +0, minDate: new Date(), showOptions: {direction: 'right' }}).mask("99/99/9999", { placeholder: " " });
+	$("select#grupo_frequencia select#grupo_a_cada").change(function(){
+    var frequencia = $(this).val();
+    if(frequencia === "3"){
+      if($('select#grupo_a_cada').val() > 1){
+        $('span#a_cada_label').html('semanas');
+      } else {
+        $('span#a_cada_label').html('semana');
+      }
+    } else if(frequencia === "4"){
+      if($('select#grupo_a_cada').val() > 1){
+        $('span#a_cada_label').html('meses');
+      } else {
+        $('span#a_cada_label').html('mês');
+      }
+    } else if(frequencia === "5"){
+       if($('select#grupo_a_cada').val() > 1){
+        $('span#a_cada_label').html('anos');
+      } else {
+        $('span#a_cada_label').html('ano');
+      }
+    }
+  });
 });
 </script>

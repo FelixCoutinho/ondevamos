@@ -1,10 +1,11 @@
 <p>
 <%= link_to 'Criar um Grupo', new_grupo_path, :class => 'btn primary' %>
-<!--<%= link_to 'Convidar amigos', new_grupo_path, :class => 'btn' %>-->
+<!--<%= link_to 'Convidar amigos', new_grupo_path, :class => 'btn' %> -->
 </p>
+<h3>Meus grupos</h3>
 <table class="condensed-table zebra-striped">
   <tbody>
-  <% @grupos.each do |grupo| %>
+  <% @meus_grupos.each do |grupo| %>
       <tr>
         <td>
         <% if verificar_propietario(current_usuario, grupo.usuario) %>
@@ -23,6 +24,28 @@
         <% end %>
         </td>
         <td>
+        <% if verificar_propietario(current_usuario, grupo.usuario) %>
+        <%= link_to 'Editar', edit_grupo_path(grupo) %>
+        <% end %>
+        </td>
+        <td>
+        <% if verificar_propietario(current_usuario, grupo.usuario) %>
+        <%= link_to 'Remover', grupo, :confirm => 'Tem certeza disso?', :method => :delete %>
+        <% end %>
+        </td>
+      </tr>
+  <% end %>
+  <tbody>
+</table>
+<h3>Outros grupos</h3>
+<table class="condensed-table zebra-striped">
+  <tbody>
+  <% @grupos.each do |grupo| %>
+      <tr>
+        <td>
+        <%= grupo.nome %>
+        </td>
+        <td>
         <% if !verificar_propietario(current_usuario, grupo.usuario) %>
         <% if autorizado(grupo, current_usuario) %>
         <%= link_to 'Desassociar-se', '/grupos/desassociarUsuario/'+grupo.id.to_s, :confirm => 'Tem certeza disso?', :method => :delete %>
@@ -31,16 +54,6 @@
         <% else %>
         <%= link_to 'Associar-se', '/grupos/associarUsuario/'+grupo.id.to_s, :confirm => 'Tem certeza disso?', :method => :get %>
         <% end %>
-        <% end %>
-        </td>
-        <td>
-        <% if verificar_propietario(current_usuario, grupo.usuario) %>
-        <%= link_to 'Editar', edit_grupo_path(grupo) %>
-        <% end %>
-        </td>
-        <td>
-        <% if verificar_propietario(current_usuario, grupo.usuario) %>
-        <%= link_to 'Remover', grupo, :confirm => 'Tem certeza disso?', :method => :delete %>
         <% end %>
         </td>
       </tr>
