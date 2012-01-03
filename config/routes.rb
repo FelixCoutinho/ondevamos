@@ -32,7 +32,7 @@ Ondevamos::Application.routes.draw do
   match "/votos" => "votos#index", :via => :get
   match "/votos/home" => "votos#home", :via => :get
   # Submissão para página de criação do voto
-  match "/votos" => "votos#create", :via => :post
+  match "/votos" => "votos#create", :via => :post, :as => :voto
 
   match "/votos/jaVotou/:grupo_id" => "votos#jaVotou", :via => :get
 
