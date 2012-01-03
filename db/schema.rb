@@ -21,8 +21,9 @@ ActiveRecord::Schema.define(:version => 20111221162811) do
   end
 
   create_table "grupos_restaurantes", :id => false, :force => true do |t|
-    t.integer "grupo_id"
-    t.integer "restaurante_id"
+    t.integer  "grupo_id"
+    t.integer  "restaurante_id"
+    t.datetime "autorizado_em"
   end
 
   create_table "grupos_usuarios", :force => true do |t|
@@ -33,12 +34,14 @@ ActiveRecord::Schema.define(:version => 20111221162811) do
 
   create_table "restaurantes", :force => true do |t|
     t.string   "nome"
-    t.integer  "usuario_id"
+    t.integer  "grupo_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "usuario_id", :limit => 8
   end
 
   create_table "usuarios", :force => true do |t|
+    t.integer  "grupo_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email",                                 :default => "", :null => false
