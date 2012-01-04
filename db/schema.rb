@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(:version => 20120102164807) do
     t.integer  "usuario_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "frequencia"
     t.datetime "inicio"
     t.integer  "a_cada"
-    t.integer  "frequencia",           :limit => 8
-    t.datetime "final_ultima_votacao",              :default => '2012-01-02 16:57:50', :null => false
+    t.datetime "final_ultima_votacao", :default => '2012-01-03 22:38:29', :null => false
   end
 
   create_table "grupos_restaurantes", :id => false, :force => true do |t|
