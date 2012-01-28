@@ -23,13 +23,16 @@ Ondevamos::Application.routes.draw do
   match "/grupos/desassociarRestaurante/:id/:grupo_id" => "grupos#desassociarRestaurante", :via => :delete
   match "/grupos/associarUsuario/:grupo_id" => "grupos#associarUsuario", :via => :get
   match "/grupos/desassociarUsuario/:grupo_id" => "grupos#desassociarUsuario", :via => :delete
+  match "/grupos/usuarios/:grupo_id" => "grupos#listarUsuarios", :via => :get
+  match "/grupos/autorizar/:membro_id" => "grupos#autorizarMembro", :via => :get
+  match "/grupos/desautorizar/:membro_id" => "grupos#desautorizarMembro", :via => :delete
 
   # Rotas para os votos
   # Página inicial
   match "/votos" => "votos#index", :via => :get
   match "/votos/home" => "votos#home", :via => :get
   # Submissão para página de criação do voto
-  match "/votos" => "votos#create", :via => :post
+  match "/votos" => "votos#create", :via => :post, :as => :voto
 
   match "/votos/jaVotou/:grupo_id" => "votos#jaVotou", :via => :get
 

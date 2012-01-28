@@ -2,13 +2,9 @@ class RestaurantesController < ApplicationController
   # Faz com que esse controller passe pelo filtro de autenticação
   before_filter :authenticate_usuario!
 
-  autocomplete :restaurante, :nome do |items|
-     CustomJSON::Encoder.encode(items)
-  end
-
   # Action inicial
   def index
-    @restaurantes = Restaurante.order(:nome).all
+    @restaurantes = Restaurante.where(:usuario_id => current_usuario)
   end
 
   # Inicia o processo de criação de um restaurante
@@ -26,7 +22,7 @@ class RestaurantesController < ApplicationController
     @restaurante = Restaurante.new(params[:restaurante])
     @restaurante.usuario = current_usuario
     if @restaurante.save
-      redirect_to(restaurantes_url, :notice => 'Restaurante foi adicionado com sucesso.')
+      redirect_to(restaurantes_url, :notice => 'Restaurante foi adicionado')
     else
       render :action => "new"
     end
@@ -36,7 +32,7 @@ class RestaurantesController < ApplicationController
   def update
     @restaurante = Restaurante.find(params[:id])
     if @restaurante.update_attributes(params[:restaurante])
-      redirect_to(restaurantes_url, :notice => 'Restaurante foi atualizado com sucesso.')
+      redirect_to(restaurantes_url, :notice => 'Restaurante foi atualizado')
     else
       render :action => "edit"
     end
@@ -46,7 +42,7 @@ class RestaurantesController < ApplicationController
   def destroy
     @restaurante = Restaurante.find(params[:id])
     @restaurante.destroy
-    redirect_to(restaurantes_url, :notice => 'Restaurante foi removido com sucesso.')
+    redirect_to(restaurantes_url, :notice => 'Restaurante foi removido')
   end
 
   def search

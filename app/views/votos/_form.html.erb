@@ -9,6 +9,18 @@
 </div>
 <% end %>
 <% if !@jaVotou && !@voto.grupo_id.nil?%>
+<% if @restaurantes.empty? %>
+<div class="alert-message block-message info">
+  <p>Esse grupo ainda não possui restaurantes associados</p>
+</div>
+<p>
+  <%= link_to 'Grupos', grupo_path(@voto.grupo), :class => 'btn primary', 'rel' => "popover", 'data-content' => "Se você ainda criou ou não  associou nenhum restaurante. Agora é a hora!", 'data-original-title' => "Ainda não tem restaurantes?" %>
+</p>
+<script>
+$('a[rel=popover]').popover({placement: 'below', trigger: 'manual'});
+$('a[rel=popover]').popover('show');
+</script>
+<% else %>
 <ul class="inputs-list unstyled" id="restaurantes_opcoes">
 <% @restaurantes.each do |restaurante| %>
   <li class="optionRadio" id="restaurante_opcao">
@@ -23,5 +35,6 @@
 <%= f.submit 'Votar', :class => 'btn primary'%>
 </div>
 <%= f.hidden_field :grupo_id %>
+<% end %>
 <% end %>
 <% end %>

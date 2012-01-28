@@ -32,11 +32,11 @@ pt-BR:
       send_paranoid_instructions: "Caso seu e-mail exista em nossa base, você receberá um e-mail com um link para recuperar a sua senha."
     confirmations:
       send_instructions: 'Dentro de minutos você receberá um e-mail com instruções para confirmar a sua conta.'
-      send_paranoid_instructions: 'Caso seu e-mail exista em nossa base, dentro de minugos você receberá um e-mail com instruções para confirmar a sua conta.'
+      send_paranoid_instructions: 'Caso seu e-mail exista em nossa base, dentro de minutos você receberá um e-mail com instruções para confirmar a sua conta.'
       confirmed: 'Sua conta foi confirmada com sucesso. Você está logado.'
     registrations:
       signed_up: 'Bem-vindo! Você registrou-se com sucesso.'
-      inactive_signed_up: 'Você registrou-se com sucesso. No entanto, não pudemos realizar seu login porque sua conta %{reason}.'
+      inactive_signed_up: 'Agora você já é um dos nossos! Por favor acesse seu email e siga os passos de confirmação.'
       updated: 'Você atualizou a sua conta com sucesso.'
       destroyed: 'Até mais! Sua conta foi cancelada com sucesso. Esperamos vê-lo em breve.'
       reasons:
@@ -52,8 +52,8 @@ pt-BR:
       failure: 'Não foi possível autorizar você no %{kind} porque "%{reason}".'
     mailer:
       confirmation_instructions:
-        subject: 'Instruções para confirmação'
+        subject: "['Onde Vamos?'] Instruções para confirmação"
       reset_password_instructions:
-        subject: 'Instruções para reinicialização de senha'
+        subject: "['Onde Vamos?'] Instruções para reinicialização de senha"
       unlock_instructions:
-        subject: 'Instruções para desbloqueio'
+        subject: "['Onde Vamos?'] Instruções para desbloqueio"

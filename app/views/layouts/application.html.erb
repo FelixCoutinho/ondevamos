@@ -2,11 +2,11 @@
 <html>
 <head>
   <title>Ondevamos</title>
-  <%= stylesheet_link_tag 'bootstrap.css', 'ondevamos.css' %>
-  <%= javascript_include_tag 'jquery.js', 'jquery-ui.min.js', 'jquery_ujs.js', 'application.js' %>
+  <%= stylesheet_link_tag 'bootstrap.css', 'ondevamos.css', 'jquery-ui-1.8.16.custom.css' %>
+  <%= javascript_include_tag 'jquery.js', 'jquery-ui.min.js', 'jquery_ujs.js', 'application.js', 'bootstrap-twipsy.js', 'bootstrap-popover.js', 'jquery.maskedinput-1.3.min.js' %>
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
   <%= csrf_meta_tag %>
-
+  <% if Rails.env.production? %>
   <script type="text/javascript">
     var uvOptions = {};
     (function() {
@@ -15,7 +15,6 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
     })();
   </script>
-  <% if Rails.env.production? %>
   <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-27330817-1']);
@@ -33,8 +32,13 @@
     <div class="fill">
       <div class="container">
         <div id="nome_logo">
+        <% if usuario_signed_in? %>
+        <a class="brand" href="/votos/home">Onde Vamos?
+        </a>
+        <% else %>
         <a class="brand" href="/">Onde Vamos?
         </a>
+        <% end %>
         <!-- <img src="/images/beta.png" /> -->
         </div>
         <ul class="nav">
@@ -82,6 +86,8 @@
         <div class="span4">
           <h3><span class="label notice">Novidades</span></h3>
           <dl>
+            <dt>Moderação</dt>
+            <dd>Agora os proprietários dos grupos podem moderar os pedidos de associação.</dd>
             <dt>Grupos</dt>
             <dd>Possibilidade de gerenciar seus grupos. Com isso você pode fazer parte de quantos
             grupos quiser e participar da votação de todos esses grupos.</dd>
@@ -94,7 +100,7 @@
       </div>
     </div>
     <footer>
-      <p>&copy; Hadros 2011</p>
+      <p>&copy; Hadros <%= I18n.l Date.today, :format => "%Y"  %></p>
     </footer>
   </div>
 </body>

@@ -1,19 +1,21 @@
 === Bem vindo ao 'Onde vamos?'
 
+Acesse http://ondevamos.heroku.com/
+
 == Introdução
 Durante bastante tempo eu e meus colegas de trabalho discutimos sobre onde
 deveriamos ir almoçar/lanchar/comer. Sempre tinhamos muitas opiniões, mas era
 sempre a mesma situação, tinhamos que discutir na porta do prédio para onde
-iriamos.
+iríamos.
 
-Com essa problemática em mente foi que tomei a decisão de criar um serviço
-simples que resolveria essa questão. Surgiu a idéia do 'Onde vamos?'.
+Com essa problemática em mente foi que tomei a decisão de criar um serviço que
+resolveria essa questão. Surgiu a idéia do 'Onde vamos?'.
 
-O serviço é simples. Basta termos nossas opções de restaurante/lanchonete/shopping
-já cadastradas e daí participar de uma votação diária. Cada usuário tem direito
-a 1 (um) voto por dia. Após cada voto o sistema computa o resultado e apresenta
-um gráfico com o resultado parcial da votação. A opção que possuir mais votos é
-que vence.
+O serviço é simples. Basta termos nossas opções de restaurante/lanchonete/
+shopping já cadastradas e daí participar de uma votação diária. Cada usuário
+tem direito a 1 (um) voto por dia. Após cada voto o sistema computa o resultado
+e apresenta um gráfico com o resultado parcial da votação. A opção que possuir
+mais votos é que vence.
 
 == Instalação
 Alguns procedimentos simples são necessários.
@@ -30,7 +32,7 @@ Gemfile.
 
 O banco de dados homoloagdo é o PostgreSQL 8.4.
 
-É necessário editar o arquivo 'config/database.yml' para configurar o
+É necessário também editar o arquivo 'config/database.yml' para configurar o
 acesso a base de dados, lembre-se de editar os blocos 'development' e 'test',
 pois esses são os blocos das configurações para desenvolvimento e de teste.
 As entradas 'database', 'username', 'password' e 'host' são as principais
@@ -47,14 +49,15 @@ development:
   username: ondevamos
   password: ondevamos
   host: 127.0.0.1
+  port: 5432
 ###########################
 
 Adicione um novo usuário ao seu banco de dados Postgres.
 $ sudo -u postgres createuser -D -A -P ondevamos
 $ sudo -u postgres createdb -O ondevamos ondevamos_development
 
-A seguir execute a migração da base de dados, assim a base de dados vai ser
-criada e daí ficar pronta para uso:
+A seguir execute a migração da base de dados, assim a estrutura da base de
+dados vai ser criada e daí ficar pronta para uso:
 $ rake db:migrate
 
 Lembre-se também de adicionar as variáveis de ambiente necessárias para fazer

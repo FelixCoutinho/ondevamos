@@ -8,4 +8,18 @@ $(document).ready(function(){
       });
     }
   });
+  //$('.alert-message.block-message.success').fadeOut(5000);
+  /**$("span#nao_autorizado.label").hover(function(){
+    $(this).html('Autorizar');
+    $(this).toggleClass('success');
+  },function(){
+    $(this).html('Não autorizado');
+    $(this).toggleClass('success');
+  });
+  $("span#nao_autorizado.label").click(function(){
+
+  });
+  $("span#autorizado.label").click(function(){
+
+  });**/
 });

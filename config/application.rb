@@ -38,10 +38,16 @@ module Ondevamos
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
-    
+
+    # Configuração da Time Zone
+    config.time_zone = "Brasilia"
+
+    Date::DATE_FORMATS[:default] = "%d/%m/%Y"
+    Time::DATE_FORMATS[:default] = "%d/%m/%Y %H:%M:%S %z"
+
+    # Formatando as tags para não aparecer com 'span', prejudicava o twitter bootstrap
     ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
       html_tag
     end
   end
 end
-

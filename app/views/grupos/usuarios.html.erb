@@ -1,0 +1,43 @@
+<%= link_to 'Voltar', grupos_path %>
+
+<h2>Usuários do Grupo <a href="#"><%= @grupo.nome %></a></h2></h2>
+
+<table class="condensed-table zebra-striped">
+  <tbody>
+  <% @grupo.membros.each do |membro| %>
+      <tr>
+        <% if membro.autorizado_em.nil? %>
+        <td><span class="label important">Não autorizado</td>
+        <% else %>
+        <td><span class="label success">Autorizado</td>
+        <% end %>
+        <td><%= membro.usuario.email %></td>
+        <td>
+        <% if membro.autorizado_em.nil? %>
+        <%= link_to 'Autorizar', '/grupos/autorizar/'+membro.id.to_s, :confirm => 'Tem certeza disso?', :method => :get  %>
+        <% else %>
+        <%= link_to 'Desautorizar', '/grupos/desautorizar/'+membro.id.to_s, :confirm => 'Tem certeza disso?', :method => :delete %>
+        <% end %>
+        <td>
+        <!--
+        <% if membro.autorizado_em.nil? %>
+        <%= link_to('/grupos/autorizar/'+membro.id.to_s, :confirm => 'Tem certeza disso?', :method => :get, :class => "link_autorizacao") do %>
+          <span class="label autorizacao" id="nao_autorizado">
+          Não autorizado
+          </span>
+        <% end %>
+        <% else %>
+        <span class="label success autorizacao" id="autorizado">
+        Autorizado
+        <%= link_to '', '/grupos/desautorizar/'+membro.id.to_s, :confirm => 'Tem certeza disso?', :method => :delete %>
+        </span>
+        <% end %>
+         -->
+        </td>
+        </td>
+      </tr>
+  <% end %>
+  <tbody>
+</table>
+
+<%= link_to 'Voltar', grupos_path %>

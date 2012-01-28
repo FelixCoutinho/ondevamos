@@ -18,7 +18,6 @@ class VotosController < ApplicationController
 
   # Adiciona/cria um voto
   def create
-    @restaurantes = Restaurante.order(:nome).all
     @voto = Voto.new(params[:voto])
     # Usuário que está autenticado
     @voto.usuario = Usuario.find(current_usuario.id)
@@ -27,6 +26,7 @@ class VotosController < ApplicationController
     @grupos = Grupo.where(:usuario_id => current_usuario)
     @grupos = @grupos + @voto.usuario.grupos
     @voto.data = Date.today
+    @restaurantes = Grupo.find(@voto.grupo).restaurantes.order(:nome)
     if @voto.valid?
       @grupo = Grupo.find(@voto.grupo)
       @jaVotou = @voto.jaVotou @voto.usuario, @grupo

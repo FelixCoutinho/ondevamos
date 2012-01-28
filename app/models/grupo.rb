@@ -1,16 +1,18 @@
 class Grupo < ActiveRecord::Base
-  has_and_belongs_to_many :usuarios
+  has_many :membros
+  has_many :usuarios, :through => :membros, :conditions => "grupos_usuarios.autorizado_em is not null"
   has_and_belongs_to_many :restaurantes
   belongs_to :usuario # Dono do grupo
 
-  validates_presence_of :nome, :usuario_id
+  Frequencias = {
+    (DIARIA = "Todo dia") => 1,
+    (UTEIS = "Todos os dias da semana (seg. a sex.)") => 2,
+    (SEMANAL = "Semanal") => 3,
+    (MENSAL = "Mensal") => 4,
+    (ANUAL = "Anual") => 5
+  }
 
-  #validate :verificar_propietario
+  validates_presence_of :nome, :usuario_id, :frequencia, :inicio
 
-  def verificar_propietario
-    if usuario_id != current_usuario.id
-      errors << "Somente o dono pode modificar o grupo."
-    end
-  end
-
+  validates :inicio, :date => { :after_or_equal_to => Date.today }, :unless => :id
 end
