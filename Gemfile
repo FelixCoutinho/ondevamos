@@ -24,3 +24,7 @@ group :test do
 
   gem 'webrat'
 end
+
+group :development do
+ gem 'yaml_db'
+end

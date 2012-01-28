@@ -112,6 +112,7 @@ GEM
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
       rack-test (>= 0.5.3)
+    yaml_db (0.2.2)
 
 PLATFORMS
   ruby
@@ -128,3 +129,4 @@ DEPENDENCIES
   rails3-jquery-autocomplete
   rcov
   webrat
+  yaml_db
